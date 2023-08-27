@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Paradise_Point
 {
@@ -39,7 +40,31 @@ namespace Paradise_Point
         {
             try
             {
+                string query = "SELECT isAdmin, isSecretary FROM EMPLOYEE WHERE firstName = @firstName OR password = @password";
+                command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@firstName", txtUserName.Text);
+                command.Parameters.AddWithValue("@password", txtPassword.Text);
 
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    bool isAdmin = reader.GetBoolean(0);
+                    bool isSecretary = reader.GetBoolean(1);
+
+                    if (isAdmin || isSecretary)
+                    {
+                        Dashboard_Form dashboardForm = new Dashboard_Form();
+                        dashboardForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Access Denied! You are not a Admin or Secretary.");
+                    }
+                }
+
+                reader.Close();
             }
             catch(SqlException ex)
             {
