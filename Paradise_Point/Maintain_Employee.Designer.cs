@@ -51,54 +51,60 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(75, 48);
+            this.label1.Location = new System.Drawing.Point(112, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 16);
+            this.label1.Size = new System.Drawing.Size(188, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Employee Number";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 130);
+            this.label2.Location = new System.Drawing.Point(112, 203);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 16);
+            this.label2.Size = new System.Drawing.Size(94, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Job Title";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(75, 192);
+            this.label3.Location = new System.Drawing.Point(112, 300);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 16);
+            this.label3.Size = new System.Drawing.Size(116, 25);
             this.label3.TabIndex = 2;
             this.label3.Text = "First Name";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(75, 253);
+            this.label4.Location = new System.Drawing.Point(112, 395);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 16);
+            this.label4.Size = new System.Drawing.Size(115, 25);
             this.label4.TabIndex = 3;
             this.label4.Text = "Last Name";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(75, 311);
+            this.label5.Location = new System.Drawing.Point(112, 486);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.Size = new System.Drawing.Size(65, 25);
             this.label5.TabIndex = 4;
             this.label5.Text = "Email";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 373);
+            this.label6.Location = new System.Drawing.Point(112, 583);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 16);
+            this.label6.Size = new System.Drawing.Size(106, 25);
             this.label6.TabIndex = 5;
             this.label6.Text = "Password";
             // 
@@ -106,9 +112,10 @@
             // 
             this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancel.Location = new System.Drawing.Point(97, 455);
+            this.btnCancel.Location = new System.Drawing.Point(146, 711);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(187, 65);
+            this.btnCancel.Size = new System.Drawing.Size(280, 102);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -116,9 +123,10 @@
             // 
             this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Location = new System.Drawing.Point(353, 455);
+            this.btnSave.Location = new System.Drawing.Point(530, 711);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(187, 65);
+            this.btnSave.Size = new System.Drawing.Size(280, 102);
             this.btnSave.TabIndex = 7;
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -126,19 +134,22 @@
             // 
             this.btnInsert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInsert.BackgroundImage")));
             this.btnInsert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnInsert.Location = new System.Drawing.Point(500, 90);
+            this.btnInsert.Location = new System.Drawing.Point(750, 141);
+            this.btnInsert.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(187, 65);
+            this.btnInsert.Size = new System.Drawing.Size(280, 102);
             this.btnInsert.TabIndex = 8;
             this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnUpdate
             // 
             this.btnUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate.BackgroundImage")));
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUpdate.Location = new System.Drawing.Point(500, 192);
+            this.btnUpdate.Location = new System.Drawing.Point(750, 300);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(187, 65);
+            this.btnUpdate.Size = new System.Drawing.Size(280, 102);
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.UseVisualStyleBackColor = true;
             // 
@@ -146,61 +157,67 @@
             // 
             this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDelete.Location = new System.Drawing.Point(500, 301);
+            this.btnDelete.Location = new System.Drawing.Point(750, 470);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(187, 65);
+            this.btnDelete.Size = new System.Drawing.Size(280, 102);
             this.btnDelete.TabIndex = 10;
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // cmbJobTitle
             // 
             this.cmbJobTitle.FormattingEnabled = true;
-            this.cmbJobTitle.Location = new System.Drawing.Point(207, 130);
+            this.cmbJobTitle.Location = new System.Drawing.Point(310, 203);
+            this.cmbJobTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbJobTitle.Name = "cmbJobTitle";
-            this.cmbJobTitle.Size = new System.Drawing.Size(216, 24);
+            this.cmbJobTitle.Size = new System.Drawing.Size(322, 33);
             this.cmbJobTitle.TabIndex = 11;
             // 
             // hsbEmployeeNum
             // 
-            this.hsbEmployeeNum.Location = new System.Drawing.Point(230, 48);
+            this.hsbEmployeeNum.Location = new System.Drawing.Point(345, 75);
             this.hsbEmployeeNum.Name = "hsbEmployeeNum";
-            this.hsbEmployeeNum.Size = new System.Drawing.Size(193, 21);
+            this.hsbEmployeeNum.Size = new System.Drawing.Size(290, 21);
             this.hsbEmployeeNum.TabIndex = 12;
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(207, 185);
+            this.txtFirstName.Location = new System.Drawing.Point(310, 289);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(216, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(322, 31);
             this.txtFirstName.TabIndex = 13;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(207, 250);
+            this.txtLastName.Location = new System.Drawing.Point(310, 391);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(216, 22);
+            this.txtLastName.Size = new System.Drawing.Size(322, 31);
             this.txtLastName.TabIndex = 14;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(207, 308);
+            this.txtEmail.Location = new System.Drawing.Point(310, 481);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(216, 22);
+            this.txtEmail.Size = new System.Drawing.Size(322, 31);
             this.txtEmail.TabIndex = 15;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(207, 370);
+            this.txtPassword.Location = new System.Drawing.Point(310, 578);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(216, 22);
+            this.txtPassword.Size = new System.Drawing.Size(322, 31);
             this.txtPassword.TabIndex = 16;
             // 
             // Maintain_Employee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(756, 566);
+            this.ClientSize = new System.Drawing.Size(1134, 884);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtLastName);
@@ -218,8 +235,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Maintain_Employee";
             this.Text = "Maintain_Employee";
+            this.Load += new System.EventHandler(this.Maintain_Employee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
