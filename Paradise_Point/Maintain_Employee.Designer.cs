@@ -34,24 +34,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Involved = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.cmbJobTitle = new System.Windows.Forms.ComboBox();
+            this.hsbEmployeeNum = new System.Windows.Forms.HScrollBar();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.cmbEmpNum = new System.Windows.Forms.ComboBox();
-            this.cmbInvolved = new System.Windows.Forms.ComboBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(84, 75);
+            this.label1.Location = new System.Drawing.Point(112, 75);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(188, 25);
@@ -61,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(84, 192);
+            this.label2.Location = new System.Drawing.Point(112, 203);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 25);
@@ -71,7 +71,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(84, 402);
+            this.label3.Location = new System.Drawing.Point(112, 300);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 25);
@@ -81,7 +81,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(85, 506);
+            this.label4.Location = new System.Drawing.Point(112, 395);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(115, 25);
@@ -91,22 +91,22 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(85, 613);
+            this.label5.Location = new System.Drawing.Point(112, 486);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 25);
             this.label5.TabIndex = 4;
             this.label5.Text = "Email";
             // 
-            // Involved
+            // label6
             // 
-            this.Involved.AutoSize = true;
-            this.Involved.Location = new System.Drawing.Point(84, 290);
-            this.Involved.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Involved.Name = "Involved";
-            this.Involved.Size = new System.Drawing.Size(190, 25);
-            this.Involved.TabIndex = 5;
-            this.Involved.Text = "Activity Involved In";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(112, 583);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(106, 25);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Password";
             // 
             // btnCancel
             // 
@@ -167,51 +167,50 @@
             // cmbJobTitle
             // 
             this.cmbJobTitle.FormattingEnabled = true;
-            this.cmbJobTitle.Location = new System.Drawing.Point(310, 189);
+            this.cmbJobTitle.Location = new System.Drawing.Point(310, 203);
             this.cmbJobTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbJobTitle.Name = "cmbJobTitle";
-            this.cmbJobTitle.Size = new System.Drawing.Size(338, 33);
+            this.cmbJobTitle.Size = new System.Drawing.Size(322, 33);
             this.cmbJobTitle.TabIndex = 11;
+            // 
+            // hsbEmployeeNum
+            // 
+            this.hsbEmployeeNum.Location = new System.Drawing.Point(345, 75);
+            this.hsbEmployeeNum.Name = "hsbEmployeeNum";
+            this.hsbEmployeeNum.Size = new System.Drawing.Size(290, 21);
+            this.hsbEmployeeNum.TabIndex = 12;
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(310, 396);
+            this.txtFirstName.Location = new System.Drawing.Point(310, 289);
             this.txtFirstName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(338, 31);
+            this.txtFirstName.Size = new System.Drawing.Size(322, 31);
             this.txtFirstName.TabIndex = 13;
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(310, 506);
+            this.txtLastName.Location = new System.Drawing.Point(310, 391);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(338, 31);
+            this.txtLastName.Size = new System.Drawing.Size(322, 31);
             this.txtLastName.TabIndex = 14;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(310, 613);
+            this.txtEmail.Location = new System.Drawing.Point(310, 481);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(338, 31);
+            this.txtEmail.Size = new System.Drawing.Size(322, 31);
             this.txtEmail.TabIndex = 15;
             // 
-            // cmbEmpNum
+            // txtPassword
             // 
-            this.cmbEmpNum.FormattingEnabled = true;
-            this.cmbEmpNum.Location = new System.Drawing.Point(310, 75);
-            this.cmbEmpNum.Name = "cmbEmpNum";
-            this.cmbEmpNum.Size = new System.Drawing.Size(338, 33);
-            this.cmbEmpNum.TabIndex = 17;
-            // 
-            // cmbInvolved
-            // 
-            this.cmbInvolved.FormattingEnabled = true;
-            this.cmbInvolved.Location = new System.Drawing.Point(320, 290);
-            this.cmbInvolved.Name = "cmbInvolved";
-            this.cmbInvolved.Size = new System.Drawing.Size(328, 33);
-            this.cmbInvolved.TabIndex = 18;
+            this.txtPassword.Location = new System.Drawing.Point(310, 578);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(322, 31);
+            this.txtPassword.TabIndex = 16;
             // 
             // Maintain_Employee
             // 
@@ -219,18 +218,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1134, 884);
-            this.Controls.Add(this.cmbInvolved);
-            this.Controls.Add(this.cmbEmpNum);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
+            this.Controls.Add(this.hsbEmployeeNum);
             this.Controls.Add(this.cmbJobTitle);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.Involved);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -252,17 +251,17 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label Involved;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ComboBox cmbJobTitle;
+        private System.Windows.Forms.HScrollBar hsbEmployeeNum;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.ComboBox cmbEmpNum;
-        private System.Windows.Forms.ComboBox cmbInvolved;
+        private System.Windows.Forms.TextBox txtPassword;
     }
 }

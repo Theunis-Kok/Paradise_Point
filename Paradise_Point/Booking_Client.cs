@@ -16,5 +16,10 @@ namespace Paradise_Point
         {
             InitializeComponent();
         }
+
+        private void Booking_Client_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

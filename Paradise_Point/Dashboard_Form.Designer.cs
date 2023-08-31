@@ -49,7 +49,7 @@
             this.lblUserName.AutoSize = true;
             this.lblUserName.Location = new System.Drawing.Point(91, 30);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(80, 17);
+            this.lblUserName.Size = new System.Drawing.Size(75, 16);
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "Bob Burger";
             // 
@@ -118,6 +118,7 @@
             this.btnMaintainClient.Size = new System.Drawing.Size(192, 57);
             this.btnMaintainClient.TabIndex = 6;
             this.btnMaintainClient.UseVisualStyleBackColor = true;
+            this.btnMaintainClient.Click += new System.EventHandler(this.btnMaintainClient_Click);
             // 
             // btnMaintainUnit
             // 
@@ -129,7 +130,7 @@
             this.btnMaintainUnit.Size = new System.Drawing.Size(192, 57);
             this.btnMaintainUnit.TabIndex = 7;
             this.btnMaintainUnit.UseVisualStyleBackColor = true;
-            this.btnMaintainUnit.Click += new System.EventHandler(this.btnMaintainUnit_Click);
+            this.btnMaintainUnit.Click += new System.EventHandler(this.btnMaintainUnit_Click_1);
             // 
             // btnMaintainEmployee
             // 
