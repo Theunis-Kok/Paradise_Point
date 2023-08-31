@@ -119,7 +119,7 @@ namespace Paradise_Point
                     conn.Open();
                 }
 
-                string sqlNumber = "SELECT Count(*) AS RecordCount FROM UNIT";
+                string sqlNumber = "SELECT MAX(UnitNum) AS RecordCount FROM UNIT";
                 command = new SqlCommand(sqlNumber, conn);
                 iNumberUnit = (int)command.ExecuteScalar();
                 command.Dispose();
