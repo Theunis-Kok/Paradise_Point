@@ -52,5 +52,12 @@ namespace Paradise_Point
             maintain_employee.ShowDialog();
             this.Hide();
         }
+
+        private void btnAllocateStaff_Click(object sender, EventArgs e)
+        {
+            Allocating_Staff allocating_Staff = new Allocating_Staff();
+            allocating_Staff.ShowDialog();
+            this.Hide();
+        }
     }
 }
