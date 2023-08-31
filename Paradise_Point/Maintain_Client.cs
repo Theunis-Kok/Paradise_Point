@@ -48,6 +48,9 @@ namespace Paradise_Point
         private void btnCancel_Click(object sender, EventArgs e)
         {
             btnDelete.Enabled = true;
+            btnInsert.Enabled = true;
+            btnUpdate.Enabled = true;
+            cmbSelectID.Enabled = true;
 
             txtFirstName.Enabled = false;
             txtLastName.Enabled = false;
@@ -57,6 +60,11 @@ namespace Paradise_Point
 
             btnCancel.Visible = false;
             btnSave.Visible = false;
+
+            if(conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
 
             // Populate ComboBox
             string select_query = "SELECT ClientNum FROM CLIENT";
@@ -362,7 +370,7 @@ namespace Paradise_Point
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-
+            cmbSelectID.Enabled = false;
             btnCancel.Visible = true;
             btnSave.Visible = true;
             btnDelete.Enabled = false;
@@ -385,6 +393,13 @@ namespace Paradise_Point
 
             Upsert = true;
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Dashboard_Form dash = new Dashboard_Form();
+            dash.Show();
+            this.Hide();
         }
     }
 }
