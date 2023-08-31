@@ -34,18 +34,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.cmbJobTitle = new System.Windows.Forms.ComboBox();
-            this.hsbEmployeeNum = new System.Windows.Forms.HScrollBar();
+            this.cmbInvolved = new System.Windows.Forms.ComboBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.cmbEmpNum = new System.Windows.Forms.ComboBox();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -97,16 +96,6 @@
             this.label5.Size = new System.Drawing.Size(65, 25);
             this.label5.TabIndex = 4;
             this.label5.Text = "Email";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(112, 583);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 25);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Password";
             // 
             // btnCancel
             // 
@@ -164,21 +153,14 @@
             this.btnDelete.TabIndex = 10;
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // cmbJobTitle
+            // cmbInvolved
             // 
-            this.cmbJobTitle.FormattingEnabled = true;
-            this.cmbJobTitle.Location = new System.Drawing.Point(310, 203);
-            this.cmbJobTitle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cmbJobTitle.Name = "cmbJobTitle";
-            this.cmbJobTitle.Size = new System.Drawing.Size(322, 33);
-            this.cmbJobTitle.TabIndex = 11;
-            // 
-            // hsbEmployeeNum
-            // 
-            this.hsbEmployeeNum.Location = new System.Drawing.Point(345, 75);
-            this.hsbEmployeeNum.Name = "hsbEmployeeNum";
-            this.hsbEmployeeNum.Size = new System.Drawing.Size(290, 21);
-            this.hsbEmployeeNum.TabIndex = 12;
+            this.cmbInvolved.FormattingEnabled = true;
+            this.cmbInvolved.Location = new System.Drawing.Point(310, 203);
+            this.cmbInvolved.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbInvolved.Name = "cmbInvolved";
+            this.cmbInvolved.Size = new System.Drawing.Size(322, 33);
+            this.cmbInvolved.TabIndex = 11;
             // 
             // txtFirstName
             // 
@@ -204,13 +186,13 @@
             this.txtEmail.Size = new System.Drawing.Size(322, 31);
             this.txtEmail.TabIndex = 15;
             // 
-            // txtPassword
+            // cmbEmpNum
             // 
-            this.txtPassword.Location = new System.Drawing.Point(310, 578);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(322, 31);
-            this.txtPassword.TabIndex = 16;
+            this.cmbEmpNum.FormattingEnabled = true;
+            this.cmbEmpNum.Location = new System.Drawing.Point(310, 75);
+            this.cmbEmpNum.Name = "cmbEmpNum";
+            this.cmbEmpNum.Size = new System.Drawing.Size(322, 33);
+            this.cmbEmpNum.TabIndex = 17;
             // 
             // Maintain_Employee
             // 
@@ -218,18 +200,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1134, 884);
-            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.cmbEmpNum);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.hsbEmployeeNum);
-            this.Controls.Add(this.cmbJobTitle);
+            this.Controls.Add(this.cmbInvolved);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -251,17 +231,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.ComboBox cmbJobTitle;
-        private System.Windows.Forms.HScrollBar hsbEmployeeNum;
+        private System.Windows.Forms.ComboBox cmbInvolved;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.ComboBox cmbEmpNum;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
