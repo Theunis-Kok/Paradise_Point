@@ -61,9 +61,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(84, 162);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.Size = new System.Drawing.Size(138, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Job Title";
+            this.label2.Text = "Activity Involved In";
             // 
             // label3
             // 
@@ -96,18 +96,19 @@
             // 
             this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancel.Location = new System.Drawing.Point(110, 569);
+            this.btnCancel.Location = new System.Drawing.Point(88, 511);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(210, 82);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
             // btnSave
             // 
             this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Location = new System.Drawing.Point(398, 569);
+            this.btnSave.Location = new System.Drawing.Point(403, 511);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(210, 82);
@@ -137,6 +138,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(210, 82);
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -148,6 +150,7 @@
             this.btnDelete.Size = new System.Drawing.Size(210, 82);
             this.btnDelete.TabIndex = 10;
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // cmbInvolved
             // 
@@ -186,7 +189,7 @@
             // 
             this.cmbEmpNum.FormattingEnabled = true;
             this.cmbEmpNum.Location = new System.Drawing.Point(232, 60);
-            this.cmbEmpNum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbEmpNum.Margin = new System.Windows.Forms.Padding(2);
             this.cmbEmpNum.Name = "cmbEmpNum";
             this.cmbEmpNum.Size = new System.Drawing.Size(242, 28);
             this.cmbEmpNum.TabIndex = 17;
@@ -197,7 +200,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(850, 707);
+            this.ClientSize = new System.Drawing.Size(850, 614);
             this.Controls.Add(this.cmbEmpNum);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtLastName);
