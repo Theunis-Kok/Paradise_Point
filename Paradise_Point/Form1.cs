@@ -58,14 +58,14 @@ namespace Paradise_Point
                     {
                         userFound = true;
                         Dashboard_Form dashboardForm = new Dashboard_Form();
-                        dashboardForm.Show();
+                        dashboardForm.ShowDialog();
                         this.Hide();
                     }
                     if(isSecretary)
                     {
                         userFound = true;
                         Secretary secretaryForm = new Secretary();
-                        secretaryForm.Show();
+                        secretaryForm.ShowDialog();
                         this.Hide();
                     }
                 }

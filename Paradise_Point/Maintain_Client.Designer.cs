@@ -55,6 +55,7 @@
             this.cmbSelectID.Size = new System.Drawing.Size(256, 24);
             this.cmbSelectID.TabIndex = 0;
             this.cmbSelectID.Text = "ID";
+            this.cmbSelectID.SelectedIndexChanged += new System.EventHandler(this.cmbSelectID_SelectedIndexChanged_1);
             // 
             // label1
             // 
@@ -180,6 +181,7 @@
             this.btnDelete.Size = new System.Drawing.Size(181, 52);
             this.btnDelete.TabIndex = 14;
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
             // button5
             // 
@@ -214,6 +216,7 @@
             this.Controls.Add(this.cmbSelectID);
             this.Name = "Maintain_Client";
             this.Text = "Maintain_Client";
+            this.Load += new System.EventHandler(this.Maintain_Client_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
