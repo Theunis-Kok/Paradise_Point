@@ -89,6 +89,33 @@ namespace Paradise_Point
 
 
 
+            // Create a connection object
+            conn = new SqlConnection(connString);
+
+            // Open the connection
+            conn.Open();
+
+            // Create a select command
+            cmd = new SqlCommand("SELECT EmployeeNum FROM EMPLOYEE", conn);
+
+            // Execute the command and get the data reader
+            reader = cmd.ExecuteReader();
+
+            // Clear the combo box
+            cmbEmpNum.Items.Clear();
+
+            // Loop through the data reader and add items to the combo box
+            while (reader.Read())
+            {
+                cmbEmpNum.Items.Add(reader["EmployeeNum"].ToString());
+            }
+
+            // Close the data reader and the connection
+            reader.Close();
+            conn.Close();
+
+
+
 
         }
     }
