@@ -17,6 +17,8 @@ namespace Paradise_Point
         SqlConnection conn;
         SqlCommand cmd;
         SqlDataReader reader, reader2;
+        SqlDataAdapter adapter;
+
 
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
@@ -112,7 +114,6 @@ namespace Paradise_Point
 
                 populateEmployeeNum();
                 populateActivity();
-                displayInfo();
 
                 conn.Close();
             }
@@ -123,38 +124,51 @@ namespace Paradise_Point
         }
 
         public void Update()
-        {
-            string empNum = cmbEmpNum.Text;
-            string fName = txtFirstName.Text;
-            string lName = txtLastName.Text;
-            string email = txtEmail.Text;
-            string activityInvolved = cmbInvolved.Text;
+        { 
+            try
+            {
+                // Get the values from the text boxes and combo boxes
+                string empNum = cmbEmpNum.Text;
+                string fName = txtFirstName.Text;
+                string lName = txtLastName.Text;
+                string email = txtEmail.Text;
+                string activityInvolved = cmbInvolved.Text;
 
-           
-            conn = new SqlConnection(connString);
-            conn.Open();
 
-            cmd = new SqlCommand("UPDATE EMPLOYEE SET ActNum =@actnum, firstName = @fName, lastName = @lName, email = @email, activityInvolvedIn = @activityInvolved WHERE EmployeeNum = @empNum", conn);
+                // Create a connection object
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    // Open the connection
+                    conn.Open();
 
-            cmd.Parameters.AddWithValue("@empNum", empNum);
-            cmd.Parameters.AddWithValue("@fName", fName);
-            cmd.Parameters.AddWithValue("@lName", lName);
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@activityInvolved", activityInvolved);
-            cmd.Parameters.AddWithValue("@actnum", actNum);
+                    // Create an update command
+                    using (SqlCommand cmd = new SqlCommand("UPDATE EMPLOYEE SET ActNum = @actnum, firstName = @fName, lastName = @lName, email = @email, activityInvolvedIn = @activityInvolved WHERE EmployeeNum = @empNum", conn))
+                    {
+                        // Add the parameters
+                        cmd.Parameters.AddWithValue("@empNum", empNum);
+                        cmd.Parameters.AddWithValue("@fName", fName);
+                        cmd.Parameters.AddWithValue("@lName", lName);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@activityInvolved", activityInvolved);
+                        cmd.Parameters.AddWithValue("@actnum", actNum);
 
-            cmd.ExecuteNonQuery();
+                        // Execute the command
+                        cmd.ExecuteNonQuery();
+                    }
+                }
 
-            conn.Close();
-
-            MessageBox.Show("The record was updated sucessfully!");
-            populateEmployeeNum();
-            populateActivity();
+                MessageBox.Show("The record was updated successfully!" + lName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while updating the record: " + ex.Message);
+            }
         }
+
 
         public void Delete()
         {
-            //string empNum = cmbEmpNum.SelectedItem.ToString();
+            
 
             conn = new SqlConnection(connString);
 
@@ -237,37 +251,46 @@ namespace Paradise_Point
             }
         }
 
-        public void displayInfo()
+        public void DisplayInfo()
         {
-            string firstname = "";
-            string lastname = "";
-            string email = "";
-            string involvedAct = "";
-
-            conn = new SqlConnection(connString);
-
-            conn.Open();
-
-
-            cmd = new SqlCommand("SELECT * FROM EMPLOYEE WHERE EmployeeNum = @empNum", conn);
-            cmd.Parameters.AddWithValue("@empNum", cmbEmpNum.Text);
-            reader = cmd.ExecuteReader();
-
-            while(reader.Read())
+            try
             {
-                firstname = reader.GetString(1);
-                lastname = reader.GetString(2);
-                email = reader.GetString(3);
-                involvedAct = reader.GetString(5);
+                // Create a connection object
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    // Open the connection
+                    conn.Open();
 
-                txtFirstName.Text = firstname;
-                txtLastName.Text = lastname;
-                txtEmail.Text = email;
-                cmbInvolved.SelectedIndex = cmbInvolved.Items.IndexOf(involvedAct);
+                    // Create a select command
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM EMPLOYEE WHERE EmployeeNum = @empNum", conn))
+                    {
+                        // Add the parameter
+                        cmd.Parameters.AddWithValue("@empNum", cmbEmpNum.Text);
+
+                        // Execute the command and retrieve the data
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Assign the values to the text boxes and combo boxes
+                                txtFirstName.Text = reader.GetString(1);
+                                txtLastName.Text = reader.GetString(2);
+                                txtEmail.Text = reader.GetString(3);
+                                cmbInvolved.SelectedIndex = cmbInvolved.Items.IndexOf(reader.GetString(5));
+                                
+                            }
+                            reader.Close();
+                            conn.Close ();
+                        }
+                    }
+                }
             }
-            reader.Close();
-            conn.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while displaying the information: " + ex.Message);
+            }
         }
+
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
@@ -284,7 +307,7 @@ namespace Paradise_Point
 
             IUD = "Insert";
 
-            displayInfo();
+           
 
         }
 
@@ -311,7 +334,7 @@ namespace Paradise_Point
                 MessageBox.Show(error.Message);
             }
 
-            conn = new SqlConnection(connString);
+           
 
             populateEmployeeNum();
             populateActivity();
@@ -330,7 +353,7 @@ namespace Paradise_Point
 
             cmbInvolved.Enabled = false;
             cmbEmpNum.Enabled = true;
-            cmbEmpNum.SelectedIndex = -1;
+            
 
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
@@ -338,34 +361,15 @@ namespace Paradise_Point
 
             if (IUD == "Insert")
             {
-                //SaveActNum();
-
+                
                 Insert();
 
-                cmbEmpNum.Items.Clear();
-                cmbInvolved.Items.Clear();
-                txtFirstName.Text = "";
-                txtLastName.Text = "";
-                txtEmail.Text = "";
-
-                populateEmployeeNum();
-                populateActivity();
-                displayInfo();
             }
-            else if (IUD == "Update")
+            if (IUD == "Update")
             {
-                SaveActNum();
+                
                 Update();
-
-                cmbEmpNum.Items.Clear();
-                cmbInvolved.Items.Clear();
-                txtFirstName.Text = "";
-                txtLastName.Text = "";
-                txtEmail.Text = "";
-
-                populateEmployeeNum();
-                populateActivity();
-                displayInfo();
+         
             }
         }
 
@@ -389,13 +393,12 @@ namespace Paradise_Point
             btnDelete.Enabled = true;
             btnInsert.Enabled = true;
 
-            displayInfo();
+            DisplayInfo();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Delete();
-            displayInfo();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -416,13 +419,12 @@ namespace Paradise_Point
 
             IUD = "Update";
 
-            displayInfo();
         }
 
         private void cmbEmpNum_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             
-                displayInfo();
+                DisplayInfo();
             
         }
     }
