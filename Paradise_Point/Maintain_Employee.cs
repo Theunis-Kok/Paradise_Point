@@ -134,7 +134,7 @@ namespace Paradise_Point
             conn = new SqlConnection(connString);
             conn.Open();
 
-            cmd = new SqlCommand("UPDATE EMPLOYEE SET ActNum =@actnum, firstName = @fName, lastName = @lName, email = @email, ActivityInvolved = @activityInvolved WHERE EmployeeNum = @empNum", conn);
+            cmd = new SqlCommand("UPDATE EMPLOYEE SET ActNum =@actnum, firstName = @fName, lastName = @lName, email = @email, activityInvolvedIn = @activityInvolved WHERE EmployeeNum = @empNum", conn);
 
             cmd.Parameters.AddWithValue("@empNum", empNum);
             cmd.Parameters.AddWithValue("@fName", fName);
@@ -147,6 +147,7 @@ namespace Paradise_Point
 
             conn.Close();
 
+            MessageBox.Show("The record was updated sucessfully!");
             populateEmployeeNum();
             populateActivity();
         }
@@ -238,7 +239,6 @@ namespace Paradise_Point
 
         public void displayInfo()
         {
-            //string empNum = cmbEmpNum.SelectedItem.ToString();
             string firstname = "";
             string lastname = "";
             string email = "";
@@ -255,7 +255,7 @@ namespace Paradise_Point
 
             while(reader.Read())
             {
-                firstname = reader.GetString(1);//.GetValue(1);
+                firstname = reader.GetString(1);
                 lastname = reader.GetString(2);
                 email = reader.GetString(3);
                 involvedAct = reader.GetString(5);
@@ -265,15 +265,6 @@ namespace Paradise_Point
                 txtEmail.Text = email;
                 cmbInvolved.SelectedIndex = cmbInvolved.Items.IndexOf(involvedAct);
             }
-           /* if (reader.HasRows)
-            {
-                reader.Read();
-
-                txtFirstName.Text = reader["firstName"].ToString();
-                txtLastName.Text = reader["lastName"].ToString();
-                txtEmail.Text = reader["email"].ToString();
-                cmbInvolved.Text = reader["activityInvolvedIn"].ToString();
-            }*/
             reader.Close();
             conn.Close();
         }
@@ -285,6 +276,7 @@ namespace Paradise_Point
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
 
+            cmbEmpNum.Enabled = false;
             cmbInvolved.Enabled = true;
             txtEmail.Enabled = true;
             txtFirstName.Enabled = true;
@@ -349,15 +341,32 @@ namespace Paradise_Point
                 //SaveActNum();
 
                 Insert();
+
+                cmbEmpNum.Items.Clear();
+                cmbInvolved.Items.Clear();
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+                txtEmail.Text = "";
+
+                populateEmployeeNum();
+                populateActivity();
+                displayInfo();
             }
             else if (IUD == "Update")
             {
                 SaveActNum();
-
                 Update();
-            }
 
-            displayInfo();
+                cmbEmpNum.Items.Clear();
+                cmbInvolved.Items.Clear();
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+                txtEmail.Text = "";
+
+                populateEmployeeNum();
+                populateActivity();
+                displayInfo();
+            }
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
@@ -365,6 +374,7 @@ namespace Paradise_Point
             txtEmail.Text = "";
             txtFirstName.Text= "";
             txtLastName.Text = "";
+            cmbInvolved.Text = "";
 
             txtEmail.Enabled = false;
             txtFirstName.Enabled = false;
@@ -390,12 +400,23 @@ namespace Paradise_Point
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+
+            txtEmail.Enabled = true;
+            txtFirstName.Enabled = true;
+            txtLastName.Enabled = true;
+
+
+            cmbInvolved.Enabled = true;
+            cmbEmpNum.Enabled = true;
+
             btnInsert.Enabled = false;
             btnCancel.Visible = true;
             btnSave.Visible = true;
             btnDelete.Enabled = false;
 
             IUD = "Update";
+
+            displayInfo();
         }
 
         private void cmbEmpNum_SelectedIndexChanged_1(object sender, EventArgs e)
