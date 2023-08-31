@@ -16,9 +16,7 @@ namespace Paradise_Point
 
         SqlConnection conn;
         SqlCommand cmd;
-        SqlDataAdapter adapter;
         SqlDataReader reader;
-        DataSet ds;
 
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
@@ -42,13 +40,11 @@ namespace Paradise_Point
 
             SaveActNum();
 
-            MessageBox.Show(actNum.ToString());
-
             conn = new SqlConnection(connString);
 
             conn.Open();
 
-            string sqlNumber = "SELECT Count (*) AS RecordCount FROM EMPLOYEE";
+            string sqlNumber = "SELECT MAX(EmployeeNum) AS Count FROM EMPLOYEE";
             cmd = new SqlCommand(sqlNumber, conn);
             iEmployeeNum = (int)cmd.ExecuteScalar();
             cmd.Dispose();
@@ -87,6 +83,8 @@ namespace Paradise_Point
 
             // Execute the command
             cmd.ExecuteNonQuery();
+
+            MessageBox.Show("The record was inserted sucessfully!");
 
             // Close the connection
             conn.Close();
@@ -169,7 +167,11 @@ namespace Paradise_Point
             // Execute the command and get the data reader
             reader = cmd.ExecuteReader();
 
-            // Declare a variable to store the ActNum value
+            while(reader.Read())
+            {
+                actNum = reader.GetInt32(0);
+            }
+           /* // Declare a variable to store the ActNum value
             //actNum = 0;
 
             // Check if the data reader has rows
@@ -180,7 +182,7 @@ namespace Paradise_Point
 
                 // Get the ActNum value
                 actNum = Convert.ToInt32(reader["ActNum"]);
-            }
+            } */
 
             // Close the data reader and the connection
             reader.Close();
@@ -209,7 +211,6 @@ namespace Paradise_Point
 
         private void Maintain_Employee_Load(object sender, EventArgs e)
         {
-            //disable
             btnCancel.Visible = false;
             btnSave.Visible = false;
             cmbInvolved.Enabled = false;
@@ -260,93 +261,24 @@ namespace Paradise_Point
             conn.Close();
 
 
-
-            //Insert into Activity Involved in
-
-            // Create a connection object
             conn = new SqlConnection(connString);
 
-            // Open the connection
             conn.Open();
 
-            // Create a select command
             cmd = new SqlCommand("SELECT activityName FROM ACTIVITY", conn);
 
-            // Execute the command and get the data reader
             reader = cmd.ExecuteReader();
-
-            // Clear the combo box
             cmbInvolved.Items.Clear();
 
-            // Loop through the data reader and add items to the combo box
+
             while (reader.Read())
             {
                 cmbInvolved.Items.Add(reader["activityName"].ToString());
             }
 
-            // Close the data reader and the connection
             reader.Close();
             conn.Close();
 
-
-
-
-
-
-        }
-
-        private void cmbEmpNum_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (cmbEmpNum.SelectedIndex == -1)
-            {
-                //disable
-                btnCancel.Visible = false;
-                btnSave.Visible = false;
-                cmbInvolved.Enabled = false;
-                txtEmail.Enabled = false;
-                txtFirstName.Enabled = false;
-                txtLastName.Enabled = false;
-
-            }
-            else
-            {
-                // Get the selected employee number
-                string empNum = cmbEmpNum.SelectedItem.ToString();
-
-                // Create a connection object
-                conn = new SqlConnection(connString);
-
-                // Open the connection
-                conn.Open();
-
-                // Create a select command
-                cmd = new SqlCommand("SELECT * FROM EMPLOYEE WHERE EmployeeNum = @empNum", conn);
-
-                // Add the parameter
-                cmd.Parameters.AddWithValue("@empNum", empNum);
-
-                // Execute the command and get the data reader
-                reader = cmd.ExecuteReader();
-
-                // Check if the data reader has rows
-                if (reader.HasRows)
-                {
-                    // Read the first row
-                    reader.Read();
-
-                    // Set the text box values
-                    txtFirstName.Text = reader["firstName"].ToString();
-                    txtLastName.Text = reader["lastName"].ToString();
-                    txtEmail.Text = reader["email"].ToString();
-                    cmbInvolved.Text = reader["activityInvolvedIn"].ToString();
-                }
-
-                // Close the data reader and the connection
-                reader.Close();
-                conn.Close();
-
-            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -380,7 +312,8 @@ namespace Paradise_Point
             btnInsert.Enabled = true;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+       
+        private void btnSave_Click_1(object sender, EventArgs e)
         {
             txtEmail.Text = "";
             txtFirstName.Text = "";
@@ -409,9 +342,44 @@ namespace Paradise_Point
             }
         }
 
-        private void cmbInvolved_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbEmpNum_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            if (cmbEmpNum.SelectedIndex == -1)
+            {
+                btnCancel.Visible = false;
+                btnSave.Visible = false;
+                cmbInvolved.Enabled = false;
+                txtEmail.Enabled = false;
+                txtFirstName.Enabled = false;
+                txtLastName.Enabled = false;
 
+            }
+            else
+            {
+                string empNum = cmbEmpNum.SelectedItem.ToString();
+
+                conn = new SqlConnection(connString);
+
+                conn.Open();
+
+
+                cmd = new SqlCommand("SELECT * FROM EMPLOYEE WHERE EmployeeNum = @empNum", conn);
+                cmd.Parameters.AddWithValue("@empNum", empNum);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+
+                    txtFirstName.Text = reader["firstName"].ToString();
+                    txtLastName.Text = reader["lastName"].ToString();
+                    txtEmail.Text = reader["email"].ToString();
+                    cmbInvolved.Text = reader["activityInvolvedIn"].ToString();
+                }
+                reader.Close();
+                conn.Close();
+
+            }
         }
     }
 }
