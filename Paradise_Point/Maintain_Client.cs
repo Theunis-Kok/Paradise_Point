@@ -21,6 +21,8 @@ namespace Paradise_Point
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
 
+        int iClientNum = 0;
+        bool Upsert = false;
 
         public Maintain_Client()
         {
@@ -32,12 +34,15 @@ namespace Paradise_Point
             btnCancel.Visible = true;
             btnSave.Visible = true;
             btnDelete.Enabled = false;
+            btnInsert.Enabled = false;
 
             txtFirstName.Enabled = true;
             txtLastName.Enabled = true;
             txtID.Enabled = true;
             txtCellPhone.Enabled = true;
             txtEmail.Enabled = true;
+
+            Upsert = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -52,82 +57,139 @@ namespace Paradise_Point
 
             btnCancel.Visible = false;
             btnSave.Visible = false;
+
+            // Populate ComboBox
+            string select_query = "SELECT ClientNum FROM CLIENT";
+            command = new SqlCommand(select_query, conn);
+            reader = command.ExecuteReader();
+
+            // Clear existing items
+            cmbSelectID.Items.Clear();
+
+            // Populate ComboBox with values from the reader
+            while (reader.Read())
+            {
+                cmbSelectID.Items.Add(reader["ClientNum"].ToString());
+            }
+
+            reader.Close();
+
+            // Set the selected index to 0 (display the first value)
+            if (cmbSelectID.Items.Count > 0)
+            {
+                cmbSelectID.SelectedIndex = 0;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             try
             {
-                conn = new SqlConnection(connString);
-                if (conn.State == ConnectionState.Closed)
+
+                if (Upsert == true)
                 {
-                    conn.Open();
-                }
 
-                string update_query = "UPDATE CLIENT SET firstName = @FirstName, lastName = @LastName, id = @ID, cellphone = @Cellphone, email = @Email WHERE ClientNum = @SelectedID";
-                SqlCommand updateCommand = new SqlCommand(update_query, conn);
-
-                updateCommand.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
-                updateCommand.Parameters.AddWithValue("@LastName", txtLastName.Text);
-                updateCommand.Parameters.AddWithValue("@ID", txtID.Text);
-                updateCommand.Parameters.AddWithValue("@Cellphone", txtCellPhone.Text);
-                updateCommand.Parameters.AddWithValue("@Email", txtEmail.Text);
-                updateCommand.Parameters.AddWithValue("@SelectedID", cmbSelectID.Text);
-
-                int rowsAffected = updateCommand.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Successfully Updated");
-
-                    // Refresh the ComboBox after update
-                    cmbSelectID.Items.Clear();
-
-                    // Populate ComboBox
-                    string select_query = "SELECT ClientNum FROM CLIENT";
-                    command = new SqlCommand(select_query, conn);
-                    reader = command.ExecuteReader();
-
-                    // Clear existing items
-                    cmbSelectID.Items.Clear();
-
-                    // Populate ComboBox with values from the reader
-                    while (reader.Read())
+                    //insert text 
+                    if (conn.State == ConnectionState.Closed)
                     {
-                        cmbSelectID.Items.Add(reader["ClientNum"].ToString());
+                        conn.Open();
                     }
 
-                    reader.Close();
+                    MessageBox.Show(" Connection Opened");
 
-                    // Set the selected index to 0 (display the first value)
-                    if (cmbSelectID.Items.Count > 0)
+                    string sqlNumber = "Select MAX(ClientNum) AS ClientNum FROM CLIENT";
+                    SqlCommand command1 = new SqlCommand(sqlNumber, conn);
+                    iClientNum = (int)command1.ExecuteScalar();
+                    command1.Dispose();
+                    iClientNum += 1;
+
+                    MessageBox.Show("Got new primary key");
+
+                    string insert_query = "INSERT INTO CLIENT(ClientNum,firstName,lastName,id,cellphone,email) VALUES (" + iClientNum + ",'" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtID.Text + "','" + txtCellPhone.Text + "','" + txtEmail.Text + "')";
+
+                    //inser string
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    SqlCommand command = new SqlCommand(insert_query, conn);
+
+                    adapter.InsertCommand = command;
+                    adapter.InsertCommand.ExecuteNonQuery();
+                    //message that shows that data has been updated 
+                    MessageBox.Show("Updatede Data");
+                    conn.Close();
+                }
+                else {
+                    
+                    if (conn.State == ConnectionState.Closed)
                     {
-                        cmbSelectID.SelectedIndex = 0;
+                        conn.Open();
                     }
 
-                    // Clear textboxes
-                    txtFirstName.Clear();
-                    txtLastName.Clear();
-                    txtID.Clear();
-                    txtCellPhone.Clear();
-                    txtEmail.Clear();
+                    string update_query = "UPDATE CLIENT SET firstName = @FirstName, lastName = @LastName, id = @ID, cellphone = @Cellphone, email = @Email WHERE ClientNum = @SelectedID";
+                    SqlCommand updateCommand = new SqlCommand(update_query, conn);
 
-                    // Disable textboxes and hide buttons
-                    txtFirstName.Enabled = false;
-                    txtLastName.Enabled = false;
-                    txtID.Enabled = false;
-                    txtCellPhone.Enabled = false;
-                    txtEmail.Enabled = false;
-                    btnCancel.Visible = false;
-                    btnSave.Visible = false;
-                }
-                else
-                {
-                    MessageBox.Show("No matching record found to update.");
-                }
+                    updateCommand.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
+                    updateCommand.Parameters.AddWithValue("@LastName", txtLastName.Text);
+                    updateCommand.Parameters.AddWithValue("@ID", txtID.Text);
+                    updateCommand.Parameters.AddWithValue("@Cellphone", txtCellPhone.Text);
+                    updateCommand.Parameters.AddWithValue("@Email", txtEmail.Text);
+                    updateCommand.Parameters.AddWithValue("@SelectedID", cmbSelectID.Text);
 
-                conn.Close();
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Successfully Updated");
+
+                        // Refresh the ComboBox after update
+                        cmbSelectID.Items.Clear();
+
+                        // Populate ComboBox
+                        string select_query = "SELECT ClientNum FROM CLIENT";
+                        command = new SqlCommand(select_query, conn);
+                        reader = command.ExecuteReader();
+
+                        // Clear existing items
+                        cmbSelectID.Items.Clear();
+
+                        // Populate ComboBox with values from the reader
+                        while (reader.Read())
+                        {
+                            cmbSelectID.Items.Add(reader["ClientNum"].ToString());
+                        }
+
+                        reader.Close();
+
+                        // Set the selected index to 0 (display the first value)
+                        if (cmbSelectID.Items.Count > 0)
+                        {
+                            cmbSelectID.SelectedIndex = 0;
+                        }
+
+                        // Clear textboxes
+                        txtFirstName.Clear();
+                        txtLastName.Clear();
+                        txtID.Clear();
+                        txtCellPhone.Clear();
+                        txtEmail.Clear();
+
+                        // Disable textboxes and hide buttons
+                        txtFirstName.Enabled = false;
+                        txtLastName.Enabled = false;
+                        txtID.Enabled = false;
+                        txtCellPhone.Enabled = false;
+                        txtEmail.Enabled = false;
+                        btnCancel.Visible = false;
+                        btnSave.Visible = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No matching record found to update.");
+                    }
+
+                    conn.Close();
+                }
+                
+                
             }
             catch (SqlException error)
             {
@@ -139,6 +201,7 @@ namespace Paradise_Point
         {
             try
             {
+                
                 conn = new SqlConnection(connString);
                 if (conn.State == ConnectionState.Closed)
                 {
@@ -295,6 +358,33 @@ namespace Paradise_Point
             {
                 MessageBox.Show(error.Message);
             }
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+
+            btnCancel.Visible = true;
+            btnSave.Visible = true;
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled = false;
+
+            txtFirstName.Enabled = true;
+            txtLastName.Enabled = true;
+            txtID.Enabled = true;
+            txtCellPhone.Enabled = true;
+            txtEmail.Enabled = true;
+
+            // Clear textboxes
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtID.Clear();
+            txtCellPhone.Clear();
+            txtEmail.Clear();
+            cmbSelectID.Items.Clear();
+            cmbSelectID.Text = "";
+
+            Upsert = true;
+
         }
     }
 }
