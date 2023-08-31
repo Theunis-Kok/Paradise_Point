@@ -39,8 +39,15 @@ namespace Paradise_Point
             this.Visible = true;
         }
 
-<<<<<<< HEAD
-=======
+        private void btnMaintainClient_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Maintain_Client maintain_Client = new Maintain_Client();
+            maintain_Client.ShowDialog();
+            this.Visible = true;
+        }
+
+
         private void btnMaintainEmployee_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -48,6 +55,6 @@ namespace Paradise_Point
             maintain_employee.ShowDialog();
             this.Visible = true;
         }
->>>>>>> 88291a42d16c7dca7cfa2c7ef6ff1c97c1b635fc
+
     }
 }

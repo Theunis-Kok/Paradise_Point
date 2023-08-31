@@ -119,6 +119,7 @@
             this.btnMaintainClient.Size = new System.Drawing.Size(288, 89);
             this.btnMaintainClient.TabIndex = 6;
             this.btnMaintainClient.UseVisualStyleBackColor = true;
+            this.btnMaintainClient.Click += new System.EventHandler(this.btnMaintainClient_Click);
             // 
             // btnMaintainUnit
             // 
@@ -142,7 +143,6 @@
             this.btnMaintainEmployee.Size = new System.Drawing.Size(288, 89);
             this.btnMaintainEmployee.TabIndex = 8;
             this.btnMaintainEmployee.UseVisualStyleBackColor = true;
-            this.btnMaintainEmployee.Click += new System.EventHandler(this.btnMaintainEmployee_Click);
             // 
             // btnMaintainAct
             // 

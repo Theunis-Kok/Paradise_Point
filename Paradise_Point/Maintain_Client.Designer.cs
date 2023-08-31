@@ -158,6 +158,8 @@
             this.btnCancel.Size = new System.Drawing.Size(272, 81);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -169,6 +171,8 @@
             this.btnSave.Size = new System.Drawing.Size(272, 81);
             this.btnSave.TabIndex = 12;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Visible = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnUpdate
             // 
@@ -180,6 +184,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(272, 81);
             this.btnUpdate.TabIndex = 13;
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
