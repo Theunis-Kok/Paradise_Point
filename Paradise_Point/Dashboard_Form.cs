@@ -23,5 +23,12 @@ namespace Paradise_Point
             loginForm.Show();
             this.Hide();
         }
+
+        private void btnMaintainAct_Click(object sender, EventArgs e)
+        {
+            Maintain_Activities maintain_Activities = new Maintain_Activities();
+            maintain_Activities.Show();
+            this.Hide();
+        }
     }
 }
