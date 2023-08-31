@@ -29,43 +29,6 @@ namespace Paradise_Point
             InitializeComponent();
         }
 
-
-        private void Maintain_Unit_Load(object sender, EventArgs e)
-        {
-            conn = new SqlConnection(connectionString);
-            if (conn.State == ConnectionState.Closed)
-            {
-                conn.Open();
-            }
-
-
-            string sqlName = "SELECT UnitNum,location FROM UNIT";
-            command = new SqlCommand(sqlName, conn);
-
-            dataReader = command.ExecuteReader();
-
-            string sID = "";
-
-            while (dataReader.Read())
-            {
-                sID = Convert.ToString(dataReader.GetValue(0));
-
-                cmbID.Items.Add(sID);
-            }
-
-            dataReader.Close();
-            command.Dispose();
-            conn.Close();
-
-            cmbID.SelectedIndex = 0;
-            displayInfo();
-
-            nudNoBath.Enabled = false;
-            nudNoBeds.Enabled = false;
-            txtPrice.Enabled = false;
-            cmbLocation.Enabled = false;
-        }
-
         public void UpdateComboBox()
         {
             cmbID.Items.Clear();
@@ -362,5 +325,40 @@ namespace Paradise_Point
             cmbID.Enabled = false;
         }
 
+        private void Maintain_Unit_Load_1(object sender, EventArgs e)
+        {
+            conn = new SqlConnection(connectionString);
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
+
+            string sqlName = "SELECT UnitNum,location FROM UNIT";
+            command = new SqlCommand(sqlName, conn);
+
+            dataReader = command.ExecuteReader();
+
+            string sID = "";
+
+            while (dataReader.Read())
+            {
+                sID = Convert.ToString(dataReader.GetValue(0));
+
+                cmbID.Items.Add(sID);
+            }
+
+            dataReader.Close();
+            command.Dispose();
+            conn.Close();
+
+            cmbID.SelectedIndex = 0;
+            displayInfo();
+
+            nudNoBath.Enabled = false;
+            nudNoBeds.Enabled = false;
+            txtPrice.Enabled = false;
+            cmbLocation.Enabled = false;
+        }
     }
 }

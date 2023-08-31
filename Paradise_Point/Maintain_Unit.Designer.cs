@@ -122,7 +122,7 @@
             "Beach Front",
             "Overwater Bungalows",
             "Tropical Garden",
-            "Surfer\'s Paradise Cabins",
+            "Surfers Paradise Cabins",
             "Palm-lined Shore Residences",
             "Sunset View Bungelows",
             "Marina Waterfront Villas"});
@@ -222,6 +222,7 @@
             this.Controls.Add(this.cmbID);
             this.Name = "Maintain_Unit";
             this.Text = "Maintain_Unit";
+            this.Load += new System.EventHandler(this.Maintain_Unit_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.nudNoBeds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNoBath)).EndInit();
             this.ResumeLayout(false);
