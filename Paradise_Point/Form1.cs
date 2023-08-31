@@ -54,11 +54,18 @@ namespace Paradise_Point
                     bool isAdmin = reader.GetBoolean(0);
                     bool isSecretary = reader.GetBoolean(1);
 
-                    if (isAdmin || isSecretary)
+                    if (isAdmin)
                     {
                         userFound = true;
                         Dashboard_Form dashboardForm = new Dashboard_Form();
                         dashboardForm.Show();
+                        this.Hide();
+                    }
+                    if(isSecretary)
+                    {
+                        userFound = true;
+                        Secretary secretaryForm = new Secretary();
+                        secretaryForm.Show();
                         this.Hide();
                     }
                 }
