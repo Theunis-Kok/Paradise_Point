@@ -39,18 +39,17 @@ namespace Paradise_Point
             this.Hide();
         }
 
-
-        private void btnMaintainEmployee_Click(object sender, EventArgs e)
-        {
-            Maintain_Employee maintain_employee = new Maintain_Employee();
-            maintain_employee.ShowDialog();
-            this.Hide();
-        }
-
         private void btnMaintainUnit_Click_1(object sender, EventArgs e)
         {
             Maintain_Unit maintain_Unit = new Maintain_Unit();
             maintain_Unit.ShowDialog();
+            this.Hide();
+        }
+
+        private void btnMaintainEmployee_Click_1(object sender, EventArgs e)
+        {
+            Maintain_Employee maintain_employee = new Maintain_Employee();
+            maintain_employee.ShowDialog();
             this.Hide();
         }
     }
