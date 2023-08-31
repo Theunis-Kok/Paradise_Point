@@ -142,6 +142,7 @@
             this.btnMaintainEmployee.Size = new System.Drawing.Size(288, 89);
             this.btnMaintainEmployee.TabIndex = 8;
             this.btnMaintainEmployee.UseVisualStyleBackColor = true;
+            this.btnMaintainEmployee.Click += new System.EventHandler(this.btnMaintainEmployee_Click);
             // 
             // btnMaintainAct
             // 
