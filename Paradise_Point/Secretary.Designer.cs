@@ -99,6 +99,7 @@
             this.btnMaintainClient.Size = new System.Drawing.Size(190, 56);
             this.btnMaintainClient.TabIndex = 5;
             this.btnMaintainClient.UseVisualStyleBackColor = true;
+            this.btnMaintainClient.Click += new System.EventHandler(this.btnMaintainClient_Click);
             // 
             // btnHelp
             // 
@@ -114,18 +115,19 @@
             // 
             this.btnLogOut.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogOut.BackgroundImage")));
             this.btnLogOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLogOut.Location = new System.Drawing.Point(598, 513);
+            this.btnLogOut.Location = new System.Drawing.Point(598, 461);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(190, 56);
             this.btnLogOut.TabIndex = 7;
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // Secretary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 581);
+            this.ClientSize = new System.Drawing.Size(800, 558);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnMaintainClient);
@@ -136,6 +138,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Secretary";
             this.Text = "Secretary";
+            this.Load += new System.EventHandler(this.Secretary_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

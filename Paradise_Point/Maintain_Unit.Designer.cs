@@ -63,7 +63,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(72, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 17);
+            this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "No. of Beds";
             // 
@@ -72,7 +72,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(72, 176);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "No. of Bath";
             // 
@@ -81,7 +81,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(72, 240);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 17);
+            this.label3.Size = new System.Drawing.Size(38, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "Price";
             // 
@@ -90,7 +90,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(72, 306);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 17);
+            this.label4.Size = new System.Drawing.Size(58, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "Location";
             // 
@@ -222,7 +222,6 @@
             this.Controls.Add(this.cmbID);
             this.Name = "Maintain_Unit";
             this.Text = "Maintain_Unit";
-            this.Load += new System.EventHandler(this.Maintain_Unit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudNoBeds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNoBath)).EndInit();
             this.ResumeLayout(false);

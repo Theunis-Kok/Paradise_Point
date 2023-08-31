@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Paradise_Point
 {
@@ -20,23 +21,40 @@ namespace Paradise_Point
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             Form1 loginForm = new Form1();
-            loginForm.Show();
+            loginForm.ShowDialog();
             this.Hide();
         }
 
         private void btnMaintainAct_Click(object sender, EventArgs e)
         {
             Maintain_Activities maintain_Activities = new Maintain_Activities();
-            maintain_Activities.Show();
+            maintain_Activities.ShowDialog();
             this.Hide();
         }
 
+
         private void btnMaintainUnit_Click(object sender, EventArgs e)
         {
-            this.Hide();
             Maintain_Unit maintain_Unit = new Maintain_Unit();
             maintain_Unit.ShowDialog();
-            this.Visible = true;
+            this.Hide();
         }
+
+        private void btnMaintainClient_Click(object sender, EventArgs e)
+        {
+            Maintain_Client maintain_Client = new Maintain_Client();
+            maintain_Client.ShowDialog();
+            this.Hide();
+        }
+
+
+        private void btnMaintainEmployee_Click(object sender, EventArgs e)
+        {
+            Maintain_Employee maintain_employee = new Maintain_Employee();
+            maintain_employee.ShowDialog();
+            this.Hide();
+        }
+
+
     }
 }
