@@ -116,7 +116,7 @@ namespace Paradise_Point
                 // Execute the command
                 command.ExecuteNonQuery();
 
-                MessageBox.Show("The record was updated! ", "Updated successfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The record was Inserted successfully! ", "Updated successfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Close the connection
                 conn.Close();
@@ -227,7 +227,7 @@ namespace Paradise_Point
                 adapter.DeleteCommand = command;
                 adapter.DeleteCommand.ExecuteNonQuery();
 
-                MessageBox.Show("The record was Deleted! ", "Updated successfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The record was Deleted! ", "Deleted successfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 cmbName.Items.Clear();
                 cmbName.Text = "";
