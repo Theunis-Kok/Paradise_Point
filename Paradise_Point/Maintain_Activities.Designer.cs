@@ -36,18 +36,19 @@
             this.cmbName = new System.Windows.Forms.ComboBox();
             this.cmbSupervisor = new System.Windows.Forms.ComboBox();
             this.txtTimeDuration = new System.Windows.Forms.TextBox();
-            this.lblPrice = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 30);
+            this.label1.Location = new System.Drawing.Point(81, 82);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
@@ -57,7 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 80);
+            this.label2.Location = new System.Drawing.Point(81, 132);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
@@ -67,7 +68,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 122);
+            this.label3.Location = new System.Drawing.Point(81, 174);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
@@ -77,7 +78,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 170);
+            this.label4.Location = new System.Drawing.Point(81, 222);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(31, 13);
@@ -87,8 +88,8 @@
             // cmbName
             // 
             this.cmbName.FormattingEnabled = true;
-            this.cmbName.Location = new System.Drawing.Point(143, 30);
-            this.cmbName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbName.Location = new System.Drawing.Point(188, 82);
+            this.cmbName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbName.Name = "cmbName";
             this.cmbName.Size = new System.Drawing.Size(181, 21);
             this.cmbName.TabIndex = 4;
@@ -97,36 +98,26 @@
             // cmbSupervisor
             // 
             this.cmbSupervisor.FormattingEnabled = true;
-            this.cmbSupervisor.Location = new System.Drawing.Point(143, 77);
-            this.cmbSupervisor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbSupervisor.Location = new System.Drawing.Point(188, 129);
+            this.cmbSupervisor.Margin = new System.Windows.Forms.Padding(2);
             this.cmbSupervisor.Name = "cmbSupervisor";
             this.cmbSupervisor.Size = new System.Drawing.Size(181, 21);
             this.cmbSupervisor.TabIndex = 5;
             // 
             // txtTimeDuration
             // 
-            this.txtTimeDuration.Location = new System.Drawing.Point(143, 122);
-            this.txtTimeDuration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTimeDuration.Location = new System.Drawing.Point(188, 174);
+            this.txtTimeDuration.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimeDuration.Name = "txtTimeDuration";
             this.txtTimeDuration.Size = new System.Drawing.Size(181, 20);
             this.txtTimeDuration.TabIndex = 6;
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(143, 169);
-            this.lblPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(15, 13);
-            this.lblPrice.TabIndex = 7;
-            this.lblPrice.Text = "R";
             // 
             // btnCancel
             // 
             this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancel.Location = new System.Drawing.Point(38, 240);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Location = new System.Drawing.Point(83, 292);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(152, 48);
             this.btnCancel.TabIndex = 8;
@@ -137,19 +128,20 @@
             // 
             this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
             this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.Location = new System.Drawing.Point(214, 240);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Location = new System.Drawing.Point(259, 292);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(152, 48);
             this.btnSave.TabIndex = 9;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnInsert
             // 
             this.btnInsert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInsert.BackgroundImage")));
             this.btnInsert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnInsert.Location = new System.Drawing.Point(386, 30);
-            this.btnInsert.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnInsert.Location = new System.Drawing.Point(431, 82);
+            this.btnInsert.Margin = new System.Windows.Forms.Padding(2);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(152, 48);
             this.btnInsert.TabIndex = 10;
@@ -160,8 +152,8 @@
             // 
             this.btnUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate.BackgroundImage")));
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUpdate.Location = new System.Drawing.Point(386, 107);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdate.Location = new System.Drawing.Point(431, 159);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(152, 48);
             this.btnUpdate.TabIndex = 11;
@@ -172,13 +164,31 @@
             // 
             this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDelete.Location = new System.Drawing.Point(386, 188);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDelete.Location = new System.Drawing.Point(431, 240);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(152, 48);
             this.btnDelete.TabIndex = 12;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackgroundImage = global::Paradise_Point.Properties.Resources.Back;
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBack.Location = new System.Drawing.Point(13, 13);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(125, 44);
+            this.btnBack.TabIndex = 13;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(188, 214);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(113, 20);
+            this.txtPrice.TabIndex = 14;
             // 
             // Maintain_Activities
             // 
@@ -186,12 +196,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(600, 350);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.txtTimeDuration);
             this.Controls.Add(this.cmbSupervisor);
             this.Controls.Add(this.cmbName);
@@ -199,7 +210,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Maintain_Activities";
             this.Text = "Maintain_Activities";
             this.Load += new System.EventHandler(this.Maintain_Activities_Load);
@@ -217,11 +228,12 @@
         private System.Windows.Forms.ComboBox cmbName;
         private System.Windows.Forms.ComboBox cmbSupervisor;
         private System.Windows.Forms.TextBox txtTimeDuration;
-        private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.TextBox txtPrice;
     }
 }

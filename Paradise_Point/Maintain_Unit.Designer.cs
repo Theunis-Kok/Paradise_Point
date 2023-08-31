@@ -43,6 +43,7 @@
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudNoBeds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNoBath)).BeginInit();
             this.SuspendLayout();
@@ -50,11 +51,12 @@
             // cmbID
             // 
             this.cmbID.FormattingEnabled = true;
-            this.cmbID.Location = new System.Drawing.Point(60, 31);
+            this.cmbID.Location = new System.Drawing.Point(186, 41);
             this.cmbID.Name = "cmbID";
             this.cmbID.Size = new System.Drawing.Size(213, 24);
             this.cmbID.TabIndex = 0;
             this.cmbID.Text = "ID";
+            this.cmbID.SelectedIndexChanged += new System.EventHandler(this.cmbID_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -116,6 +118,14 @@
             // cmbLocation
             // 
             this.cmbLocation.FormattingEnabled = true;
+            this.cmbLocation.Items.AddRange(new object[] {
+            "Beach Front",
+            "Overwater Bungalows",
+            "Tropical Garden",
+            "Surfers Paradise Cabins",
+            "Palm-lined Shore Residences",
+            "Sunset View Bungelows",
+            "Marina Waterfront Villas"});
             this.cmbLocation.Location = new System.Drawing.Point(228, 297);
             this.cmbLocation.Name = "cmbLocation";
             this.cmbLocation.Size = new System.Drawing.Size(183, 24);
@@ -130,6 +140,8 @@
             this.btnCancel.Size = new System.Drawing.Size(178, 53);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -140,6 +152,8 @@
             this.btnSave.Size = new System.Drawing.Size(178, 53);
             this.btnSave.TabIndex = 10;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Visible = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnInsert
             // 
@@ -150,6 +164,7 @@
             this.btnInsert.Size = new System.Drawing.Size(178, 53);
             this.btnInsert.TabIndex = 11;
             this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // btnUpdate
             // 
@@ -160,6 +175,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(178, 53);
             this.btnUpdate.TabIndex = 12;
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -170,6 +186,18 @@
             this.btnDelete.Size = new System.Drawing.Size(178, 53);
             this.btnDelete.TabIndex = 13;
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBack.Location = new System.Drawing.Point(12, 12);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(142, 53);
+            this.btnBack.TabIndex = 14;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Maintain_Unit
             // 
@@ -177,6 +205,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(761, 513);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnInsert);
@@ -193,6 +222,7 @@
             this.Controls.Add(this.cmbID);
             this.Name = "Maintain_Unit";
             this.Text = "Maintain_Unit";
+            this.Load += new System.EventHandler(this.Maintain_Unit_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.nudNoBeds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNoBath)).EndInit();
             this.ResumeLayout(false);
@@ -216,5 +246,6 @@
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnBack;
     }
 }
