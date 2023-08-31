@@ -251,7 +251,11 @@ namespace Paradise_Point
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Dashboard_Form dash = new Dashboard_Form();
+            dash.Show();
+            this.Hide();
+
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)

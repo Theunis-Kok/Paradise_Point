@@ -44,7 +44,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -179,7 +179,7 @@
             // 
             this.btnUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate.BackgroundImage")));
             this.btnUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUpdate.Location = new System.Drawing.Point(834, 198);
+            this.btnUpdate.Location = new System.Drawing.Point(834, 287);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(272, 81);
@@ -191,7 +191,7 @@
             // 
             this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDelete.Location = new System.Drawing.Point(834, 342);
+            this.btnDelete.Location = new System.Drawing.Point(834, 408);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(272, 81);
@@ -199,23 +199,26 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
-            // button5
+            // btnBack
             // 
-            this.button5.Location = new System.Drawing.Point(1029, 12);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(134, 61);
-            this.button5.TabIndex = 15;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBack.Location = new System.Drawing.Point(25, 14);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(167, 61);
+            this.btnBack.TabIndex = 15;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(834, 488);
+            this.btnInsert.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInsert.BackgroundImage")));
+            this.btnInsert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInsert.Location = new System.Drawing.Point(834, 167);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(272, 73);
+            this.btnInsert.Size = new System.Drawing.Size(272, 82);
             this.btnInsert.TabIndex = 16;
-            this.btnInsert.Text = "button1";
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -226,7 +229,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1200, 953);
             this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSave);
@@ -268,7 +271,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnInsert;
     }
 }
