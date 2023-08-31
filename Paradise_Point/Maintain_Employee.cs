@@ -27,7 +27,7 @@ namespace Paradise_Point
         String fName = "";
         String lName = "";
         String email = "";
-        String password = "";
+        String ActivityInvolved = "";
         public Maintain_Employee()
         {
             InitializeComponent();
@@ -40,7 +40,8 @@ namespace Paradise_Point
             fName = txtFirstName.Text;
             lName = txtLastName.Text;
             email = txtEmail.Text;
-            password = txtPassword.Text;
+            ActivityInvolved = cmbInvolved.Text;
+            
 
             // Create a connection object
             conn = new SqlConnection(connString);
@@ -49,14 +50,14 @@ namespace Paradise_Point
             conn.Open();
 
             // Create an insert command
-            cmd = new SqlCommand("INSERT INTO EMPLOYEE (jobTitle, firstName, lastName, email, password) VALUES (@jobTitle, @fName, @lName, @email, @password)", conn);
+            cmd = new SqlCommand("INSERT INTO EMPLOYEE (jobTitle, firstName, lastName, email, ActivityInvolved) VALUES (@jobTitle, @fName, @lName, @email, @ActivityInvolved)", conn);
 
             // Add the parameters
             cmd.Parameters.AddWithValue("@jobTitle", jobTitle);
             cmd.Parameters.AddWithValue("@fName", fName);
             cmd.Parameters.AddWithValue("@lName", lName);
             cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@ActivityInvolved", ActivityInvolved);
 
             // Execute the command
             cmd.ExecuteNonQuery();
@@ -85,6 +86,10 @@ namespace Paradise_Point
             catch (SqlException error){
                 MessageBox.Show(error.Message);
             }
+
+
+
+
         }
     }
 }
