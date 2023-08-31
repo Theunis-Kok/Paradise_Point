@@ -23,5 +23,13 @@ namespace Paradise_Point
             loginForm.Show();
             this.Hide();
         }
+
+        private void btnMaintainClient_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Maintain_Client maintain_Client = new Maintain_Client();
+            maintain_Client.ShowDialog();
+            this.Visible = true;
+        }
     }
 }

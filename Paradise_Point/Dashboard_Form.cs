@@ -30,7 +30,7 @@ namespace Paradise_Point
             maintain_Activities.Show();
             this.Hide();
         }
-<<<<<<< HEAD
+
 
         private void btnMaintainUnit_Click(object sender, EventArgs e)
         {
@@ -57,7 +57,6 @@ namespace Paradise_Point
             this.Visible = true;
         }
 
-=======
->>>>>>> 6042fe8a70964fda24f7601e502e80ffce04f1dd
+
     }
 }
