@@ -30,5 +30,13 @@ namespace Paradise_Point
             maintain_Activities.Show();
             this.Hide();
         }
+
+        private void btnMaintainUnit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Maintain_Unit maintain_Unit = new Maintain_Unit();
+            maintain_Unit.ShowDialog();
+            this.Visible = true;
+        }
     }
 }
