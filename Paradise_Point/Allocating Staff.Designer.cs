@@ -45,13 +45,15 @@
             this.cmbStaff16 = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.lstDisplay = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(77, 41);
+            this.label1.Location = new System.Drawing.Point(77, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 29);
             this.label1.TabIndex = 0;
@@ -61,7 +63,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(410, 41);
+            this.label2.Location = new System.Drawing.Point(410, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 29);
             this.label2.TabIndex = 1;
@@ -70,104 +72,122 @@
             // lblAct1
             // 
             this.lblAct1.AutoSize = true;
-            this.lblAct1.Location = new System.Drawing.Point(129, 98);
+            this.lblAct1.Location = new System.Drawing.Point(129, 109);
             this.lblAct1.Name = "lblAct1";
-            this.lblAct1.Size = new System.Drawing.Size(44, 16);
+            this.lblAct1.Size = new System.Drawing.Size(46, 17);
             this.lblAct1.TabIndex = 2;
             this.lblAct1.Text = "label3";
+            this.lblAct1.Visible = false;
             // 
             // lblAct2
             // 
             this.lblAct2.AutoSize = true;
-            this.lblAct2.Location = new System.Drawing.Point(129, 148);
+            this.lblAct2.Location = new System.Drawing.Point(129, 159);
             this.lblAct2.Name = "lblAct2";
-            this.lblAct2.Size = new System.Drawing.Size(44, 16);
+            this.lblAct2.Size = new System.Drawing.Size(46, 17);
             this.lblAct2.TabIndex = 3;
             this.lblAct2.Text = "label4";
+            this.lblAct2.Visible = false;
             // 
             // lblAct3
             // 
             this.lblAct3.AutoSize = true;
-            this.lblAct3.Location = new System.Drawing.Point(129, 197);
+            this.lblAct3.Location = new System.Drawing.Point(129, 208);
             this.lblAct3.Name = "lblAct3";
-            this.lblAct3.Size = new System.Drawing.Size(44, 16);
+            this.lblAct3.Size = new System.Drawing.Size(46, 17);
             this.lblAct3.TabIndex = 4;
             this.lblAct3.Text = "label5";
+            this.lblAct3.Visible = false;
             // 
             // lblAct4
             // 
             this.lblAct4.AutoSize = true;
-            this.lblAct4.Location = new System.Drawing.Point(129, 249);
+            this.lblAct4.Location = new System.Drawing.Point(129, 260);
             this.lblAct4.Name = "lblAct4";
-            this.lblAct4.Size = new System.Drawing.Size(44, 16);
+            this.lblAct4.Size = new System.Drawing.Size(46, 17);
             this.lblAct4.TabIndex = 5;
             this.lblAct4.Text = "label6";
+            this.lblAct4.Visible = false;
             // 
             // lblAct5
             // 
             this.lblAct5.AutoSize = true;
-            this.lblAct5.Location = new System.Drawing.Point(129, 297);
+            this.lblAct5.Location = new System.Drawing.Point(129, 308);
             this.lblAct5.Name = "lblAct5";
-            this.lblAct5.Size = new System.Drawing.Size(44, 16);
+            this.lblAct5.Size = new System.Drawing.Size(46, 17);
             this.lblAct5.TabIndex = 6;
             this.lblAct5.Text = "label7";
+            this.lblAct5.Visible = false;
             // 
             // lblAct6
             // 
             this.lblAct6.AutoSize = true;
-            this.lblAct6.Location = new System.Drawing.Point(129, 349);
+            this.lblAct6.Location = new System.Drawing.Point(129, 360);
             this.lblAct6.Name = "lblAct6";
-            this.lblAct6.Size = new System.Drawing.Size(44, 16);
+            this.lblAct6.Size = new System.Drawing.Size(46, 17);
             this.lblAct6.TabIndex = 7;
             this.lblAct6.Text = "label8";
+            this.lblAct6.Visible = false;
             // 
             // cmbStaff1
             // 
             this.cmbStaff1.FormattingEnabled = true;
-            this.cmbStaff1.Location = new System.Drawing.Point(356, 95);
+            this.cmbStaff1.Location = new System.Drawing.Point(356, 106);
             this.cmbStaff1.Name = "cmbStaff1";
             this.cmbStaff1.Size = new System.Drawing.Size(189, 24);
             this.cmbStaff1.TabIndex = 8;
+            this.cmbStaff1.Visible = false;
+            this.cmbStaff1.SelectedIndexChanged += new System.EventHandler(this.cmbStaff1_SelectedIndexChanged);
             // 
             // cmbStaff2
             // 
             this.cmbStaff2.FormattingEnabled = true;
-            this.cmbStaff2.Location = new System.Drawing.Point(356, 145);
+            this.cmbStaff2.Location = new System.Drawing.Point(356, 156);
             this.cmbStaff2.Name = "cmbStaff2";
             this.cmbStaff2.Size = new System.Drawing.Size(189, 24);
             this.cmbStaff2.TabIndex = 9;
+            this.cmbStaff2.Visible = false;
+            this.cmbStaff2.SelectedIndexChanged += new System.EventHandler(this.cmbStaff2_SelectedIndexChanged);
             // 
             // cmbStaff3
             // 
             this.cmbStaff3.FormattingEnabled = true;
-            this.cmbStaff3.Location = new System.Drawing.Point(356, 194);
+            this.cmbStaff3.Location = new System.Drawing.Point(356, 205);
             this.cmbStaff3.Name = "cmbStaff3";
             this.cmbStaff3.Size = new System.Drawing.Size(189, 24);
             this.cmbStaff3.TabIndex = 10;
+            this.cmbStaff3.Visible = false;
+            this.cmbStaff3.SelectedIndexChanged += new System.EventHandler(this.cmbStaff3_SelectedIndexChanged);
             // 
             // cmbStaff4
             // 
             this.cmbStaff4.FormattingEnabled = true;
-            this.cmbStaff4.Location = new System.Drawing.Point(356, 246);
+            this.cmbStaff4.Location = new System.Drawing.Point(356, 257);
             this.cmbStaff4.Name = "cmbStaff4";
             this.cmbStaff4.Size = new System.Drawing.Size(189, 24);
             this.cmbStaff4.TabIndex = 11;
+            this.cmbStaff4.Visible = false;
+            this.cmbStaff4.SelectedIndexChanged += new System.EventHandler(this.cmbStaff4_SelectedIndexChanged);
             // 
             // cmbStaff5
             // 
             this.cmbStaff5.FormattingEnabled = true;
-            this.cmbStaff5.Location = new System.Drawing.Point(356, 294);
+            this.cmbStaff5.Location = new System.Drawing.Point(356, 305);
             this.cmbStaff5.Name = "cmbStaff5";
             this.cmbStaff5.Size = new System.Drawing.Size(189, 24);
             this.cmbStaff5.TabIndex = 12;
+            this.cmbStaff5.Visible = false;
+            this.cmbStaff5.SelectedIndexChanged += new System.EventHandler(this.cmbStaff5_SelectedIndexChanged);
             // 
             // cmbStaff16
             // 
             this.cmbStaff16.FormattingEnabled = true;
-            this.cmbStaff16.Location = new System.Drawing.Point(356, 346);
+            this.cmbStaff16.Location = new System.Drawing.Point(356, 357);
             this.cmbStaff16.Name = "cmbStaff16";
             this.cmbStaff16.Size = new System.Drawing.Size(189, 24);
             this.cmbStaff16.TabIndex = 13;
+            this.cmbStaff16.Visible = false;
+            this.cmbStaff16.SelectedIndexChanged += new System.EventHandler(this.cmbStaff16_SelectedIndexChanged);
             // 
             // btnCancel
             // 
@@ -178,6 +198,8 @@
             this.btnCancel.Size = new System.Drawing.Size(167, 55);
             this.btnCancel.TabIndex = 14;
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -188,13 +210,38 @@
             this.btnSave.Size = new System.Drawing.Size(167, 55);
             this.btnSave.TabIndex = 15;
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBack.Location = new System.Drawing.Point(3, 2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(104, 38);
+            this.btnBack.TabIndex = 16;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // lstDisplay
+            // 
+            this.lstDisplay.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstDisplay.FormattingEnabled = true;
+            this.lstDisplay.ItemHeight = 17;
+            this.lstDisplay.Location = new System.Drawing.Point(72, 52);
+            this.lstDisplay.Name = "lstDisplay";
+            this.lstDisplay.Size = new System.Drawing.Size(473, 344);
+            this.lstDisplay.TabIndex = 17;
+            this.lstDisplay.Visible = false;
             // 
             // Allocating_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(633, 513);
+            this.ClientSize = new System.Drawing.Size(642, 513);
+            this.Controls.Add(this.lstDisplay);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.cmbStaff16);
@@ -213,6 +260,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Allocating_Staff";
             this.Text = "Allocating_Staff";
+            this.Load += new System.EventHandler(this.Allocating_Staff_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,5 +284,7 @@
         private System.Windows.Forms.ComboBox cmbStaff16;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.ListBox lstDisplay;
     }
 }

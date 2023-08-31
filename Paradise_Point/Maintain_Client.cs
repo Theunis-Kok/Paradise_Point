@@ -216,8 +216,7 @@ namespace Paradise_Point
                     conn.Open();
                 }
 
-                //sucess loaded
-                MessageBox.Show("Database connection succesful");
+                
 
                 // Populate ComboBox
                 string select_query = "SELECT ClientNum FROM CLIENT";
