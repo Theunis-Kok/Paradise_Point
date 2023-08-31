@@ -40,12 +40,14 @@ namespace Paradise_Point
         {
             try
             {
-                string query = "SELECT isAdmin, isSecretary FROM EMPLOYEE WHERE firstName = @firstName OR password = @password";
+                string query = "SELECT isAdmin, isSecretary FROM EMPLOYEE WHERE firstName = @firstName AND password = @password";
                 command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@firstName", txtUserName.Text);
                 command.Parameters.AddWithValue("@password", txtPassword.Text);
 
                 reader = command.ExecuteReader();
+
+                bool userFound = false;
 
                 while (reader.Read())
                 {
@@ -54,17 +56,19 @@ namespace Paradise_Point
 
                     if (isAdmin || isSecretary)
                     {
+                        userFound = true;
                         Dashboard_Form dashboardForm = new Dashboard_Form();
                         dashboardForm.Show();
                         this.Hide();
                     }
-                    else
-                    {
-                        MessageBox.Show("Access Denied! You are not a Admin or Secretary.");
-                    }
                 }
 
                 reader.Close();
+
+                if (!userFound)
+                {
+                    MessageBox.Show("Access Denied! Incorrect username or password.");
+                }
             }
             catch(SqlException ex)
             {
