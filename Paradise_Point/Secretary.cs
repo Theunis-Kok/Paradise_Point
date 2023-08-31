@@ -16,12 +16,5 @@ namespace Paradise_Point
         {
             InitializeComponent();
         }
-
-        private void btnLogOut_Click(object sender, EventArgs e)
-        {
-            Form1 loginForm = new Form1();
-            loginForm.Show();
-            this.Hide();
-        }
     }
 }
