@@ -17,12 +17,11 @@ namespace Paradise_Point
             InitializeComponent();
         }
 
-        private void btnMaintainClient_Click(object sender, EventArgs e)
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
+            Form1 loginForm = new Form1();
+            loginForm.Show();
             this.Hide();
-            Maintain_Client maintain_Client = new Maintain_Client();
-            maintain_Client.ShowDialog();
-            this.Visible = true;
         }
     }
 }
