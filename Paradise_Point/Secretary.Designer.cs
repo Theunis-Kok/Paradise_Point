@@ -119,6 +119,7 @@
             this.btnLogOut.Size = new System.Drawing.Size(190, 56);
             this.btnLogOut.TabIndex = 7;
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // Secretary
             // 
