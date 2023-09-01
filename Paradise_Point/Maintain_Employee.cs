@@ -303,6 +303,33 @@ namespace Paradise_Point
             
         }
 
+        public void Errors()
+        {
+            if (cmbInvolved.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an Activity Involved in");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(txtFirstName.Text))
+            {
+                //error provider
+                errFirstName.SetError(txtFirstName, "First name is required.");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                //error provider
+                errLastName.SetError(txtLastName, "Last name is required.");
+                return;
+            }
+            if (!txtEmail.Text.Contains("@"))
+            {
+                //error provider
+                errEmail.SetError(txtEmail, "Please enter a valid email address.");
+                return;
+            }
+        }
+
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
@@ -310,6 +337,7 @@ namespace Paradise_Point
             btnSave.Visible = true;
             btnDelete.Enabled = false;
             btnUpdate.Enabled = false;
+            btnInsert.Enabled = false;
 
             cmbEmpNum.Enabled = false;
             cmbInvolved.Enabled = true;
@@ -361,52 +389,62 @@ namespace Paradise_Point
        
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            txtEmail.Enabled = false;
-            txtFirstName.Enabled = false;
-            txtLastName.Enabled = false;
-
-            cmbInvolved.Enabled = false;
-            cmbEmpNum.Enabled = true;
             
-
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
-            btnInsert.Enabled = true;
-
-            btnCancel.Visible = false;
-            btnSave.Visible = false;
 
             if (IUD == "Insert")
             {
-                
-                if(cmbInvolved.SelectedIndex == -1){
-                    MessageBox.Show("Please select an Activity Involved in");
-                    
-                }
-                if(txtFirstName.Text == "") { 
-                    //error provider
-                    errFirstName.SetError(txtFirstName, "First name is required.");
-                    return;
-                }
-                if (txtLastName.Text == "")
-                {
-                    //error provider
-                    errLastName.SetError(txtLastName, "Last name is required.");
-                    return;
-                }
+                Errors();
 
+                errFirstName.SetError(txtEmail, "");
+                errLastName.SetError(txtEmail, "");
+                errEmail.SetError(txtEmail, "");
+
+                txtEmail.Enabled = false;
+                txtFirstName.Enabled = false;
+                txtLastName.Enabled = false;
+
+                cmbInvolved.Enabled = false;
+                cmbEmpNum.Enabled = true;
+
+
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnInsert.Enabled = true;
+
+                btnCancel.Visible = false;
+                btnSave.Visible = false;
 
                 Insert();
-
             }
             if (IUD == "Update")
             {
-                
+                errFirstName.SetError(txtEmail, "");
+                errLastName.SetError(txtEmail, "");
+                errEmail.SetError(txtEmail, "");
+
+                txtEmail.Enabled = false;
+                txtFirstName.Enabled = false;
+                txtLastName.Enabled = false;
+
+                cmbInvolved.Enabled = false;
+                cmbEmpNum.Enabled = true;
+
+
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnInsert.Enabled = true;
+
+                btnCancel.Visible = false;
+                btnSave.Visible = false;
+
+                Errors();
+
                 Update();
-         
             }
 
-            
+
+
+
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
@@ -462,6 +500,33 @@ namespace Paradise_Point
             Dashboard_Form dash = new Dashboard_Form();
             dash.Show();
             this.Hide();
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtFirstName.Text))
+            {
+                // Clear the error message
+                errFirstName.SetError(txtFirstName, "");
+            }
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                // Clear the error message
+                errLastName.SetError(txtLastName, "");
+            }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                // Clear the error message
+                errEmail.SetError(txtEmail, "");
+            }
         }
 
         private void cmbEmpNum_SelectedIndexChanged_1(object sender, EventArgs e)
