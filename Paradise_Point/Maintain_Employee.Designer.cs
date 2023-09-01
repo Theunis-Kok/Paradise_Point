@@ -49,8 +49,10 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.errFirstName = new System.Windows.Forms.ErrorProvider(this.components);
             this.errLastName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errFirstName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errLastName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -179,6 +181,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(321, 31);
             this.txtFirstName.TabIndex = 13;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // txtLastName
             // 
@@ -187,6 +190,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(321, 31);
             this.txtLastName.TabIndex = 14;
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // txtEmail
             // 
@@ -195,6 +199,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(321, 31);
             this.txtEmail.TabIndex = 15;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // cmbEmpNum
             // 
@@ -226,6 +231,10 @@
             // 
             this.errLastName.ContainerControl = this;
             // 
+            // errEmail
+            // 
+            this.errEmail.ContainerControl = this;
+            // 
             // Maintain_Employee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -254,6 +263,7 @@
             this.Load += new System.EventHandler(this.Maintain_Employee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errFirstName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errLastName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +290,6 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ErrorProvider errFirstName;
         private System.Windows.Forms.ErrorProvider errLastName;
+        private System.Windows.Forms.ErrorProvider errEmail;
     }
 }

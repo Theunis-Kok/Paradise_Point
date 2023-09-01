@@ -205,6 +205,32 @@ namespace Paradise_Point
             }
         }
 
+        public bool Errors()
+        {
+
+            bool hasError = false;
+
+            if (cmbID.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an ID ");
+                hasError = true;
+            }
+            if (String.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                //error provider
+                errPrice.SetError(txtPrice, "Price is required.");
+                hasError = true;
+            }
+            if (cmbLocation.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Location");
+                hasError = true;
+            }
+
+            return hasError;
+
+        }
+
         private void btnInsert_Click(object sender, EventArgs e)
         {
             bInsert = true;
@@ -213,8 +239,8 @@ namespace Paradise_Point
             txtPrice.Enabled = true;
             cmbLocation.Enabled = true;
 
-            nudNoBath.Value = 0;
-            nudNoBeds.Value = 0;
+            nudNoBath.Value = 1;
+            nudNoBeds.Value = 1;
             txtPrice.Text = "";
             cmbLocation.SelectedIndex = 0;
 
@@ -260,13 +286,26 @@ namespace Paradise_Point
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (bInsert == true)
+
+            if (Errors())
             {
-                InsertIntoTable();
+                // An error occurred, exit early
+                return;
             }
             else
             {
-                UpdateTable();
+                if (bInsert == true)
+                {
+
+
+                    InsertIntoTable();
+                }
+                else
+                {
+
+
+                    UpdateTable();
+                }
             }
         }
 
@@ -363,6 +402,15 @@ namespace Paradise_Point
             nudNoBeds.Enabled = false;
             txtPrice.Enabled = false;
             cmbLocation.Enabled = false;
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                // Clear the error message
+                errPrice.SetError(txtPrice, "");
+            }
         }
     }
 }
