@@ -75,5 +75,12 @@ namespace Paradise_Point
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnBookClient_Click(object sender, EventArgs e)
+        {
+            Booking_Client book_Client = new Booking_Client();
+            book_Client.ShowDialog();
+            this.Hide();
+        }
     }
 }

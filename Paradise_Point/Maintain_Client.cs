@@ -22,9 +22,32 @@ namespace Paradise_Point
         int iClientNum = 0;
         bool Upsert = false;
 
+        // Error providers for validation
+    
+        private ErrorProvider errorIDs = new ErrorProvider();
+        private ErrorProvider errorCellPhones = new ErrorProvider();
+        private ErrorProvider errorNames = new ErrorProvider();
+        private ErrorProvider errorLastNames = new ErrorProvider();
+        private ErrorProvider errorEmails = new ErrorProvider();
+
+
         public Maintain_Client()
         {
             InitializeComponent();
+            // Initialize error providers
+            
+            errorID.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorCellPhone.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+        }
+
+        private bool IsNumeric(string value)
+        {
+            return long.TryParse(value, out _);
+        }
+
+        private bool ContainsNumbers(string value)
+        {
+            return value.Any(char.IsDigit);
         }
 
         public void PopulateComboBox()
@@ -148,6 +171,48 @@ namespace Paradise_Point
         {
             try
             {
+                // Clear existing error providers
+
+                errorID.Clear();
+                errorCellPhone.Clear();
+                errorName.Clear();
+                errorLastName.Clear();
+                errorEmail.Clear();
+
+                // Validate ID format (13 digits)
+                if (!IsNumeric(txtID.Text) || txtID.Text.Length != 13)
+                {
+                    errorID.SetError(txtID, "Invalid ID format (must be 13 digits).");
+                    return;
+                }
+
+                // Validate cellphone format (10 digits)
+                if (!IsNumeric(txtCellPhone.Text) || txtCellPhone.Text.Length != 10)
+                {
+                    errorCellPhone.SetError(txtCellPhone, "Invalid cellphone number format (must be 10 digits).");
+                    return;
+                }
+
+                // Validate first name (no numbers)
+                if (ContainsNumbers(txtFirstName.Text))
+                {
+                    errorName.SetError(txtFirstName, "First name cannot contain numbers.");
+                    return;
+                }
+
+                // Validate last name (no numbers)
+                if (ContainsNumbers(txtLastName.Text))
+                {
+                    errorLastName.SetError(txtLastName, "Last name cannot contain numbers.");
+                    return;
+                }
+
+                // Validate email (must contain @)
+                if (!txtEmail.Text.Contains("@"))
+                {
+                    errorEmail.SetError(txtEmail, "Invalid email format (must contain '@').");
+                    return;
+                }
 
                 if (Upsert == true)
                 {

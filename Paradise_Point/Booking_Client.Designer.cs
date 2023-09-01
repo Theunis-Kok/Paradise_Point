@@ -104,6 +104,7 @@
             this.btnBook.Size = new System.Drawing.Size(240, 94);
             this.btnBook.TabIndex = 5;
             this.btnBook.UseVisualStyleBackColor = true;
+            this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
             // 
             // btnCancel
             // 
@@ -135,6 +136,7 @@
             this.cmbID.Name = "cmbID";
             this.cmbID.Size = new System.Drawing.Size(421, 33);
             this.cmbID.TabIndex = 8;
+            this.cmbID.SelectedIndexChanged += new System.EventHandler(this.cmbID_SelectedIndexChanged);
             // 
             // txtName
             // 
