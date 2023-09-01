@@ -106,14 +106,11 @@ namespace Paradise_Point
             }
         }
 
-        private void btnAllocateStaff_Click(object sender, EventArgs e)
+        private void btnAllocateStaff_Click_1(object sender, EventArgs e)
         {
-
             Allocating_Staff allocating_Staff = new Allocating_Staff();
             allocating_Staff.ShowDialog();
             this.Hide();
-
         }
-        
     }
 }
