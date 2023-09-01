@@ -303,31 +303,38 @@ namespace Paradise_Point
             
         }
 
-        public void Errors()
+        public bool Errors()
         {
+
+            bool hasError = false;
+
             if (cmbInvolved.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select an Activity Involved in");
-                return;
+                hasError = true;
             }
             if (String.IsNullOrWhiteSpace(txtFirstName.Text))
             {
                 //error provider
                 errFirstName.SetError(txtFirstName, "First name is required.");
-                return;
+
+                hasError = true;
             }
             if (String.IsNullOrWhiteSpace(txtLastName.Text))
             {
                 //error provider
                 errLastName.SetError(txtLastName, "Last name is required.");
-                return;
+
+                hasError = true;
             }
             if (!txtEmail.Text.Contains("@"))
             {
                 //error provider
                 errEmail.SetError(txtEmail, "Please enter a valid email address.");
-                return;
+                hasError = true;
             }
+
+            return hasError;
         }
 
 
@@ -389,60 +396,76 @@ namespace Paradise_Point
        
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            
-
-            if (IUD == "Insert")
+            if (Errors())
             {
-                Errors();
-
-                errFirstName.SetError(txtEmail, "");
-                errLastName.SetError(txtEmail, "");
-                errEmail.SetError(txtEmail, "");
-
-                txtEmail.Enabled = false;
-                txtFirstName.Enabled = false;
-                txtLastName.Enabled = false;
-
-                cmbInvolved.Enabled = false;
-                cmbEmpNum.Enabled = true;
-
-
-                btnUpdate.Enabled = true;
-                btnDelete.Enabled = true;
-                btnInsert.Enabled = true;
-
-                btnCancel.Visible = false;
-                btnSave.Visible = false;
-
-                Insert();
+                // An error occurred, exit early
+                return;
             }
-            if (IUD == "Update")
+            else
             {
-                errFirstName.SetError(txtEmail, "");
-                errLastName.SetError(txtEmail, "");
-                errEmail.SetError(txtEmail, "");
 
-                txtEmail.Enabled = false;
-                txtFirstName.Enabled = false;
-                txtLastName.Enabled = false;
-
-                cmbInvolved.Enabled = false;
-                cmbEmpNum.Enabled = true;
+                if (IUD == "Insert")
+                {
 
 
-                btnUpdate.Enabled = true;
-                btnDelete.Enabled = true;
-                btnInsert.Enabled = true;
 
-                btnCancel.Visible = false;
-                btnSave.Visible = false;
+                    errFirstName.SetError(txtEmail, "");
+                    errLastName.SetError(txtEmail, "");
+                    errEmail.SetError(txtEmail, "");
 
-                Errors();
+                    txtEmail.Enabled = false;
+                    txtFirstName.Enabled = false;
+                    txtLastName.Enabled = false;
 
-                Update();
+                    cmbInvolved.Enabled = false;
+                    cmbEmpNum.Enabled = true;
+
+
+                    btnUpdate.Enabled = true;
+                    btnDelete.Enabled = true;
+                    btnInsert.Enabled = true;
+
+                    btnCancel.Visible = false;
+                    btnSave.Visible = false;
+
+                    Insert();
+
+
+                }
+                if (IUD == "Update")
+                {
+
+
+
+
+                    errFirstName.SetError(txtEmail, "");
+                    errLastName.SetError(txtEmail, "");
+                    errEmail.SetError(txtEmail, "");
+
+                    txtEmail.Enabled = false;
+                    txtFirstName.Enabled = false;
+                    txtLastName.Enabled = false;
+
+                    cmbInvolved.Enabled = false;
+                    cmbEmpNum.Enabled = true;
+
+
+                    btnUpdate.Enabled = true;
+                    btnDelete.Enabled = true;
+                    btnInsert.Enabled = true;
+
+                    btnCancel.Visible = false;
+                    btnSave.Visible = false;
+
+
+
+
+                    Update();
+
+
+                }
+
             }
-
-
 
 
         }
