@@ -374,8 +374,10 @@ namespace Paradise_Point
 
                 cmbName.Items.Clear();
                 cmbName.Text = "";
+
                 cmbSupervisor.Items.Clear();
                 cmbSupervisor.Text = "";
+
                 txtTimeDuration.Text = "";
                 txtPrice.Text = "";
 

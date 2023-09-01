@@ -52,5 +52,12 @@ namespace Paradise_Point
             maintain_employee.ShowDialog();
             this.Hide();
         }
+
+        private void btnBookAct_Click(object sender, EventArgs e)
+        {
+            Booking_Activity booking = new Booking_Activity();
+            booking.Show();
+            this.Hide();
+        }
     }
 }
