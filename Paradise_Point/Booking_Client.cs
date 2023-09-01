@@ -52,7 +52,6 @@ namespace Paradise_Point
             command.Dispose();
             conn.Close();
 
-            MessageBox.Show(cmbUnitNum.Items.Count.ToString());
             if (cmbUnitNum.Items.Count > -1)
             {
                 cmbUnitNum.SelectedIndex = 0;
