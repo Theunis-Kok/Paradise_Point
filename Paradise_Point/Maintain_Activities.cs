@@ -290,6 +290,37 @@ namespace Paradise_Point
             }
         }
 
+
+
+        public bool Errors()
+        {
+            bool hasError = false;
+
+            if (cmbName.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Name");
+                hasError = true;
+            }
+            if (String.IsNullOrWhiteSpace(txtPrice.Text) || !decimal.TryParse(txtPrice.Text, out _))
+            {
+                //error provider
+                errPrice.SetError(txtPrice, "Enter Valid Price");
+
+                hasError = true;
+            }
+            if (String.IsNullOrWhiteSpace(txtTimeDuration.Text) || !decimal.TryParse(txtTimeDuration.Text, out _))
+            {
+                //error provider
+                errTime.SetError(txtTimeDuration, "Enter Valid Time Duration");
+
+                hasError = true;
+            }
+
+            return hasError;
+        }
+
+
+
         private void Maintain_Activities_Load(object sender, EventArgs e)
         {
             conn = new SqlConnection(connString);
@@ -460,53 +491,80 @@ namespace Paradise_Point
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (bInsert == true)
+
+            if (Errors())
             {
-                Insert();
-
-                cmbName.Items.Clear();
-                cmbName.Text = "";
-
-                cmbSupervisor.Items.Clear();
-                cmbSupervisor.Text = "";
-
-                txtTimeDuration.Text = "";
-                txtPrice.Text = "";
-
-                populateName();
-                cmbName.SelectedIndex = 0;
-                populateSupervisor();
+                // An error occurred, exit early
+                return;
             }
             else
             {
-                update();
+                if (bInsert == true)
+                {
+                    Insert();
 
-                cmbName.Items.Clear();
-                cmbName.Text = "";
-                cmbSupervisor.Items.Clear();
-                cmbSupervisor.Text = "";
-                txtTimeDuration.Text = "";
-                txtPrice.Text = "";
+                    cmbName.Items.Clear();
+                    cmbName.Text = "";
 
-                populateName();
+                    cmbSupervisor.Items.Clear();
+                    cmbSupervisor.Text = "";
+
+                    txtTimeDuration.Text = "";
+                    txtPrice.Text = "";
+
+                    populateName();
+                    cmbName.SelectedIndex = 0;
+                    populateSupervisor();
+                }
+                else
+                {
+                    update();
+
+                    cmbName.Items.Clear();
+                    cmbName.Text = "";
+                    cmbSupervisor.Items.Clear();
+                    cmbSupervisor.Text = "";
+                    txtTimeDuration.Text = "";
+                    txtPrice.Text = "";
+
+                    populateName();
+                    cmbName.SelectedIndex = 0;
+                    populateSupervisor();
+                }
+                txtTimeDuration.Enabled = false;
+                txtPrice.Enabled = false;
+                cmbSupervisor.Enabled = false;
+                cmbName.Enabled = true;
+
+                btnSave.Visible = false;
+                btnCancel.Visible = false;
+
+                btnInsert.Enabled = true;
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                bInsert = false;
                 cmbName.SelectedIndex = 0;
                 populateSupervisor();
+                displayData();
             }
-            txtTimeDuration.Enabled = false;
-            txtPrice.Enabled = false;
-            cmbSupervisor.Enabled = false;
-            cmbName.Enabled = true;
+        }
 
-            btnSave.Visible = false;
-            btnCancel.Visible = false;
+        private void txtTimeDuration_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtTimeDuration.Text))
+            {
+                // Clear the error message
+                errTime.SetError(txtTimeDuration, "");
+            }
+        }
 
-            btnInsert.Enabled = true;
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
-            bInsert = false;
-            cmbName.SelectedIndex = 0;
-            populateSupervisor();
-            displayData();
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                // Clear the error message
+                errPrice.SetError(txtPrice, "");
+            }
         }
     }
 }
