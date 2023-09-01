@@ -32,7 +32,17 @@ namespace Paradise_Point
         int bookingNum = 0;
         string dateOfAct = "";
         double price = 0;
-       
+
+        private bool IsNumeric(string value)
+        {
+            return long.TryParse(value, out _);
+        }
+
+        private bool ContainsNumbers(string value)
+        {
+            return value.Any(char.IsDigit);
+        }
+
 
         private void estabConnection()
         {

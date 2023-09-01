@@ -42,12 +42,15 @@
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtCellPhone = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
+            this.cmbUnitNum = new System.Windows.Forms.ComboBox();
+            this.lblUnitName = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(141, 167);
+            this.label1.Location = new System.Drawing.Point(88, 161);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 25);
@@ -57,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(141, 256);
+            this.label2.Location = new System.Drawing.Point(88, 251);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 25);
@@ -67,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(141, 345);
+            this.label3.Location = new System.Drawing.Point(88, 344);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 25);
@@ -77,7 +80,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(141, 434);
+            this.label4.Location = new System.Drawing.Point(88, 433);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(111, 25);
@@ -87,7 +90,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(141, 523);
+            this.label5.Location = new System.Drawing.Point(88, 522);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 25);
@@ -131,7 +134,7 @@
             // cmbID
             // 
             this.cmbID.FormattingEnabled = true;
-            this.cmbID.Location = new System.Drawing.Point(366, 153);
+            this.cmbID.Location = new System.Drawing.Point(275, 158);
             this.cmbID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbID.Name = "cmbID";
             this.cmbID.Size = new System.Drawing.Size(421, 33);
@@ -140,7 +143,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(366, 245);
+            this.txtName.Location = new System.Drawing.Point(275, 248);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(421, 31);
@@ -148,7 +151,7 @@
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(366, 341);
+            this.txtSurname.Location = new System.Drawing.Point(275, 341);
             this.txtSurname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(421, 31);
@@ -156,7 +159,7 @@
             // 
             // txtCellPhone
             // 
-            this.txtCellPhone.Location = new System.Drawing.Point(366, 430);
+            this.txtCellPhone.Location = new System.Drawing.Point(275, 430);
             this.txtCellPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCellPhone.Name = "txtCellPhone";
             this.txtCellPhone.Size = new System.Drawing.Size(421, 31);
@@ -164,11 +167,40 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(366, 519);
+            this.txtEmail.Location = new System.Drawing.Point(275, 519);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(421, 31);
             this.txtEmail.TabIndex = 12;
+            // 
+            // cmbUnitNum
+            // 
+            this.cmbUnitNum.FormattingEnabled = true;
+            this.cmbUnitNum.Location = new System.Drawing.Point(810, 301);
+            this.cmbUnitNum.Name = "cmbUnitNum";
+            this.cmbUnitNum.Size = new System.Drawing.Size(272, 33);
+            this.cmbUnitNum.TabIndex = 13;
+            this.cmbUnitNum.SelectedIndexChanged += new System.EventHandler(this.cmbUnitNum_SelectedIndexChanged);
+            // 
+            // lblUnitName
+            // 
+            this.lblUnitName.AutoSize = true;
+            this.lblUnitName.Location = new System.Drawing.Point(810, 373);
+            this.lblUnitName.Name = "lblUnitName";
+            this.lblUnitName.Size = new System.Drawing.Size(70, 25);
+            this.lblUnitName.TabIndex = 14;
+            this.lblUnitName.Text = "label6";
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBack.Location = new System.Drawing.Point(64, 33);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(166, 67);
+            this.btnBack.TabIndex = 15;
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Booking_Client
             // 
@@ -176,6 +208,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1200, 839);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.lblUnitName);
+            this.Controls.Add(this.cmbUnitNum);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtCellPhone);
             this.Controls.Add(this.txtSurname);
@@ -213,5 +248,8 @@
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtCellPhone;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.ComboBox cmbUnitNum;
+        private System.Windows.Forms.Label lblUnitName;
+        private System.Windows.Forms.Button btnBack;
     }
 }

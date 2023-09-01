@@ -41,6 +41,25 @@ namespace Paradise_Point
                 conn.Close();
 
                 conn.Open();
+
+                // Populate ComboBox
+                string select_query2 = "SELECT UnitNum FROM UNIT";
+                command = new SqlCommand(select_query2, conn);
+                reader = command.ExecuteReader();
+
+                // Clear existing items
+                cmbUnitNum.Items.Clear();
+
+                // Populate ComboBox with values from the reader
+                while (reader.Read())
+                {
+                    cmbUnitNum.Items.Add(reader["UnitNum"].ToString());
+                }
+
+                conn.Close();
+
+                conn.Open();
+
                 // Populate ComboBox
                 string select_query = "SELECT ClientNum FROM CLIENT";
                 command = new SqlCommand(select_query, conn);
@@ -177,6 +196,18 @@ namespace Paradise_Point
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void cmbUnitNum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //waar lable moet kom
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Dashboard_Form dash = new Dashboard_Form();
+            dash.Show();
+            this.Hide();
         }
     }
 }
