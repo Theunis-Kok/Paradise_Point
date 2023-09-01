@@ -89,6 +89,25 @@ namespace Paradise_Point
             conn.Close();
         }
 
+        public bool Errors()
+        {
+            bool hasError = false;
+
+            if (cmbID.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a ID");
+                hasError = true;
+            }
+            if (cmbUnitNum.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Unit");
+                hasError = true;
+            }
+
+
+            return hasError;
+        }
+
         private void Booking_Client_Load(object sender, EventArgs e)
         {
             try
@@ -220,67 +239,77 @@ namespace Paradise_Point
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            try
+
+            if (Errors())
             {
-                using (SqlConnection conn = new SqlConnection(connString))
-                {
-                    if(conn.State == ConnectionState.Closed)
-                    { 
-                        conn.Open();
-                    }
-
-                    /*string display = "SELECT ClientNum FROM CLIENT WHERE id = " + cmbID.SelectedItem.ToString();
-                    command = new SqlCommand(display, conn);
-                    reader = command.ExecuteReader();
-                    
-
-                    while(reader.Read())
-                    {
-                        sClientNum = reader.GetString(0);
-                    }
-
-                    reader.Close();*/
-                    command.Dispose();
-                    string sClientNum = cmbID.SelectedItem.ToString();
-
-                    int iNumber = 0;
-                    string sqlNumber = "SELECT MAX(BookingNum) AS RecordCount FROM BOOKINGCLIENT";
-                    command = new SqlCommand(sqlNumber, conn);
-                    object result = command.ExecuteScalar();
-                    command.Dispose();
-                    if (result != null && result != DBNull.Value)
-                    {
-                        iNumber = (int)result;
-                    }
-                    else
-                    {
-                        iNumber = 0;
-                    }
-                    iNumber++;
-
-                    DateTime currentDate = DateTime.Now;
-
-                    string currentDateAsString = currentDate.ToString("yyyy-MM-dd");
-                    string leaveDateAsString = lblDateLeave.Text;
-
-                    
-                    // Insert a new booking
-                    string insertQuery = $"INSERT INTO BOOKINGCLIENT (BookingNum, bookIn, bookOut, ClientNum, UnitNum) VALUES ("+iNumber+",'"+currentDateAsString+"','"+leaveDateAsString+"',"+sClientNum+","+cmbUnitNum.SelectedItem.ToString()+")";
-                    command = new SqlCommand(insertQuery, conn);
-                    adapter1 = new SqlDataAdapter();
-                    adapter1.InsertCommand = command;
-                    adapter1.InsertCommand.ExecuteNonQuery();
-
-                    command.Dispose();
-                    conn.Close();
-
-                    // Now you have the generated BookNum for further use
-                    MessageBox.Show("Booking added successfully. BookingNum: " + iNumber);
-                }
+                // An error occurred, exit early
+                return;
             }
-            catch (SqlException ex)
+            else
             {
-                MessageBox.Show("Error: " + ex.Message);
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connString))
+                    {
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
+                        }
+
+                        /*string display = "SELECT ClientNum FROM CLIENT WHERE id = " + cmbID.SelectedItem.ToString();
+                        command = new SqlCommand(display, conn);
+                        reader = command.ExecuteReader();
+
+
+                        while(reader.Read())
+                        {
+                            sClientNum = reader.GetString(0);
+                        }
+
+                        reader.Close();*/
+                        command.Dispose();
+                        string sClientNum = cmbID.SelectedItem.ToString();
+
+                        int iNumber = 0;
+                        string sqlNumber = "SELECT MAX(BookingNum) AS RecordCount FROM BOOKINGCLIENT";
+                        command = new SqlCommand(sqlNumber, conn);
+                        object result = command.ExecuteScalar();
+                        command.Dispose();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            iNumber = (int)result;
+                        }
+                        else
+                        {
+                            iNumber = 0;
+                        }
+                        iNumber++;
+
+                        DateTime currentDate = DateTime.Now;
+
+                        string currentDateAsString = currentDate.ToString("yyyy-MM-dd");
+                        string leaveDateAsString = lblDateLeave.Text;
+
+
+                        // Insert a new booking
+                        string insertQuery = $"INSERT INTO BOOKINGCLIENT (BookingNum, bookIn, bookOut, ClientNum, UnitNum) VALUES (" + iNumber + ",'" + currentDateAsString + "','" + leaveDateAsString + "'," + sClientNum + "," + cmbUnitNum.SelectedItem.ToString() + ")";
+                        command = new SqlCommand(insertQuery, conn);
+                        adapter1 = new SqlDataAdapter();
+                        adapter1.InsertCommand = command;
+                        adapter1.InsertCommand.ExecuteNonQuery();
+
+                        command.Dispose();
+                        conn.Close();
+
+                        // Now you have the generated BookNum for further use
+                        MessageBox.Show("Booking added successfully. BookingNum: " + iNumber);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+
             }
         }
 
