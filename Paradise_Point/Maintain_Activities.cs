@@ -256,7 +256,9 @@ namespace Paradise_Point
             btnSave.Visible = false;
             btnCancel.Visible = false;
 
+            
             populateName();
+            
         }
 
         private void cmbName_SelectedIndexChanged(object sender, EventArgs e)
@@ -351,6 +353,7 @@ namespace Paradise_Point
                 btnUpdate.Enabled = true;
                 btnDelete.Enabled = true;
 
+                
                 bInsert = false;
             }
             catch (Exception ex)

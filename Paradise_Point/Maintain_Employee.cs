@@ -157,11 +157,14 @@ namespace Paradise_Point
                     }
                 }
 
-                MessageBox.Show("The record was updated successfully!" + lName);
+                MessageBox.Show("The record was updated successfully!" );
+                cmbEmpNum.SelectedIndex = 0;
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while updating the record: " + ex.Message);
+                cmbEmpNum.SelectedIndex = 0;
             }
         }
 
@@ -290,6 +293,15 @@ namespace Paradise_Point
                 MessageBox.Show("An error occurred while displaying the information: " + ex.Message);
             }
         }
+        public void Clear()
+        {
+            cmbEmpNum.SelectedIndex = 0;
+            txtEmail.Text = " ";
+            txtFirstName.Text = " ";
+            txtLastName.Text = " ";
+            cmbInvolved.SelectedIndex = -1;
+            
+        }
 
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -306,6 +318,8 @@ namespace Paradise_Point
             txtLastName.Enabled = true;
 
             IUD = "Insert";
+
+            Clear();
 
            
 
@@ -359,9 +373,29 @@ namespace Paradise_Point
             btnDelete.Enabled = true;
             btnInsert.Enabled = true;
 
+            btnCancel.Visible = false;
+            btnSave.Visible = false;
+
             if (IUD == "Insert")
             {
                 
+                if(cmbInvolved.SelectedIndex == -1){
+                    MessageBox.Show("Please select an Activity Involved in");
+                    
+                }
+                if(txtFirstName.Text == "") { 
+                    //error provider
+                    errFirstName.SetError(txtFirstName, "First name is required.");
+                    return;
+                }
+                if (txtLastName.Text == "")
+                {
+                    //error provider
+                    errLastName.SetError(txtLastName, "Last name is required.");
+                    return;
+                }
+
+
                 Insert();
 
             }
@@ -371,14 +405,13 @@ namespace Paradise_Point
                 Update();
          
             }
+
+            
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
-            txtEmail.Text = "";
-            txtFirstName.Text= "";
-            txtLastName.Text = "";
-            cmbInvolved.Text = "";
+            
 
             txtEmail.Enabled = false;
             txtFirstName.Enabled = false;
@@ -387,11 +420,14 @@ namespace Paradise_Point
 
             cmbInvolved.Enabled = false;
             cmbEmpNum.Enabled = true;
-            cmbEmpNum.SelectedIndex = -1;
+            cmbEmpNum.SelectedIndex = 0;
 
             btnUpdate.Enabled = true;
             btnDelete.Enabled = true;
             btnInsert.Enabled = true;
+
+            btnCancel.Visible = false;
+            btnSave.Visible = false;
 
             DisplayInfo();
         }
@@ -419,6 +455,13 @@ namespace Paradise_Point
 
             IUD = "Update";
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Dashboard_Form dash = new Dashboard_Form();
+            dash.Show();
+            this.Hide();
         }
 
         private void cmbEmpNum_SelectedIndexChanged_1(object sender, EventArgs e)
