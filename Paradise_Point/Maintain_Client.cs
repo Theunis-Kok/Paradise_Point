@@ -64,10 +64,10 @@ namespace Paradise_Point
 
 
                 // Populate ComboBox
-                string select_query = "SELECT ClientNum FROM CLIENT";
+                string select_query = "A";
                 command = new SqlCommand(select_query, conn);
                 reader = command.ExecuteReader();
-
+                
                 // Clear existing items
                 cmbSelectID.Items.Clear();
 
