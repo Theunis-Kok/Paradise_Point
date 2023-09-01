@@ -76,10 +76,17 @@ namespace Paradise_Point
             }
         }
 
+<<<<<<< HEAD
         private void btnBookClient_Click(object sender, EventArgs e)
         {
             Booking_Client book_Client = new Booking_Client();
             book_Client.ShowDialog();
+=======
+        private void btnBookAct_Click(object sender, EventArgs e)
+        {
+            Booking_Activity booking = new Booking_Activity();
+            booking.Show();
+>>>>>>> 377ef2f274ab8ea09de4ca6a8605e474040acfae
             this.Hide();
         }
     }

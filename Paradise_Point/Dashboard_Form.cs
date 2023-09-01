@@ -63,7 +63,18 @@ namespace Paradise_Point
             this.Hide();
         }
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+        private void btnBookAct_Click(object sender, EventArgs e)
+        {
+            Booking_Activity booking = new Booking_Activity();
+            booking.Show();
+            this.Hide();
+=======
+<<<<<<< HEAD
+>>>>>>> 377ef2f274ab8ea09de4ca6a8605e474040acfae
         private void Dashboard_Form_Load(object sender, EventArgs e)
         {
             conn = new SqlConnection(connString);
@@ -102,10 +113,18 @@ namespace Paradise_Point
 
         private void btnAllocateStaff_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
                 Allocating_Staff allocating_Staff = new Allocating_Staff();
                 allocating_Staff.ShowDialog();
                 this.Hide();
 
+=======
+            Allocating_Staff allocating_Staff = new Allocating_Staff();
+            allocating_Staff.ShowDialog();
+            this.Hide();
+>>>>>>> d3cda3912140886a962542a127146cb92fbb128f
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
+>>>>>>> 377ef2f274ab8ea09de4ca6a8605e474040acfae
         }
         
     }

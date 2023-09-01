@@ -47,23 +47,41 @@
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
+<<<<<<< HEAD
+            this.lblUserName.Location = new System.Drawing.Point(68, 25);
+            this.lblUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(60, 13);
+=======
             this.lblUserName.Location = new System.Drawing.Point(91, 30);
             this.lblUserName.Name = "lblUserName";
 
             this.lblUserName.Size = new System.Drawing.Size(75, 16);
 
             this.lblUserName.Size = new System.Drawing.Size(80, 17);
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3cda3912140886a962542a127146cb92fbb128f
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
+>>>>>>> 377ef2f274ab8ea09de4ca6a8605e474040acfae
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "Bob Burger";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+<<<<<<< HEAD
+            this.pictureBox1.Location = new System.Drawing.Point(10, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 40);
+=======
             this.pictureBox1.Location = new System.Drawing.Point(13, 14);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -72,10 +90,17 @@
             // 
             this.btnBookClient.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBookClient.BackgroundImage")));
             this.btnBookClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnBookClient.Location = new System.Drawing.Point(28, 92);
+            this.btnBookClient.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnBookClient.Name = "btnBookClient";
+            this.btnBookClient.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnBookClient.Location = new System.Drawing.Point(37, 114);
             this.btnBookClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBookClient.Name = "btnBookClient";
             this.btnBookClient.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnBookClient.TabIndex = 2;
             this.btnBookClient.UseVisualStyleBackColor = true;
             // 
@@ -83,21 +108,36 @@
             // 
             this.btnBookAct.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBookAct.BackgroundImage")));
             this.btnBookAct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnBookAct.Location = new System.Drawing.Point(28, 160);
+            this.btnBookAct.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnBookAct.Name = "btnBookAct";
+            this.btnBookAct.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnBookAct.Location = new System.Drawing.Point(37, 197);
             this.btnBookAct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBookAct.Name = "btnBookAct";
             this.btnBookAct.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnBookAct.TabIndex = 3;
             this.btnBookAct.UseVisualStyleBackColor = true;
+            this.btnBookAct.Click += new System.EventHandler(this.btnBookAct_Click);
             // 
             // btnAllocateStaff
             // 
             this.btnAllocateStaff.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAllocateStaff.BackgroundImage")));
             this.btnAllocateStaff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnAllocateStaff.Location = new System.Drawing.Point(28, 224);
+            this.btnAllocateStaff.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnAllocateStaff.Name = "btnAllocateStaff";
+            this.btnAllocateStaff.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnAllocateStaff.Location = new System.Drawing.Point(37, 276);
             this.btnAllocateStaff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAllocateStaff.Name = "btnAllocateStaff";
             this.btnAllocateStaff.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnAllocateStaff.TabIndex = 4;
             this.btnAllocateStaff.UseVisualStyleBackColor = true;
 
@@ -106,10 +146,17 @@
             // 
             this.btnReqReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnReqReport.BackgroundImage")));
             this.btnReqReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnReqReport.Location = new System.Drawing.Point(28, 287);
+            this.btnReqReport.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnReqReport.Name = "btnReqReport";
+            this.btnReqReport.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnReqReport.Location = new System.Drawing.Point(37, 354);
             this.btnReqReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReqReport.Name = "btnReqReport";
             this.btnReqReport.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnReqReport.TabIndex = 5;
             this.btnReqReport.UseVisualStyleBackColor = true;
             // 
@@ -117,10 +164,17 @@
             // 
             this.btnMaintainClient.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaintainClient.BackgroundImage")));
             this.btnMaintainClient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnMaintainClient.Location = new System.Drawing.Point(270, 92);
+            this.btnMaintainClient.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnMaintainClient.Name = "btnMaintainClient";
+            this.btnMaintainClient.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnMaintainClient.Location = new System.Drawing.Point(360, 114);
             this.btnMaintainClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMaintainClient.Name = "btnMaintainClient";
             this.btnMaintainClient.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnMaintainClient.TabIndex = 6;
             this.btnMaintainClient.UseVisualStyleBackColor = true;
             this.btnMaintainClient.Click += new System.EventHandler(this.btnMaintainClient_Click);
@@ -129,10 +183,17 @@
             // 
             this.btnMaintainUnit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaintainUnit.BackgroundImage")));
             this.btnMaintainUnit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnMaintainUnit.Location = new System.Drawing.Point(270, 160);
+            this.btnMaintainUnit.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnMaintainUnit.Name = "btnMaintainUnit";
+            this.btnMaintainUnit.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnMaintainUnit.Location = new System.Drawing.Point(360, 197);
             this.btnMaintainUnit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMaintainUnit.Name = "btnMaintainUnit";
             this.btnMaintainUnit.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnMaintainUnit.TabIndex = 7;
             this.btnMaintainUnit.UseVisualStyleBackColor = true;
             this.btnMaintainUnit.Click += new System.EventHandler(this.btnMaintainUnit_Click_1);
@@ -141,10 +202,17 @@
             // 
             this.btnMaintainEmployee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaintainEmployee.BackgroundImage")));
             this.btnMaintainEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnMaintainEmployee.Location = new System.Drawing.Point(270, 224);
+            this.btnMaintainEmployee.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnMaintainEmployee.Name = "btnMaintainEmployee";
+            this.btnMaintainEmployee.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnMaintainEmployee.Location = new System.Drawing.Point(360, 276);
             this.btnMaintainEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMaintainEmployee.Name = "btnMaintainEmployee";
             this.btnMaintainEmployee.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnMaintainEmployee.TabIndex = 8;
             this.btnMaintainEmployee.UseVisualStyleBackColor = true;
             this.btnMaintainEmployee.Click += new System.EventHandler(this.btnMaintainEmployee_Click_1);
@@ -153,10 +221,17 @@
             // 
             this.btnMaintainAct.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaintainAct.BackgroundImage")));
             this.btnMaintainAct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnMaintainAct.Location = new System.Drawing.Point(270, 287);
+            this.btnMaintainAct.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnMaintainAct.Name = "btnMaintainAct";
+            this.btnMaintainAct.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnMaintainAct.Location = new System.Drawing.Point(360, 354);
             this.btnMaintainAct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMaintainAct.Name = "btnMaintainAct";
             this.btnMaintainAct.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnMaintainAct.TabIndex = 9;
             this.btnMaintainAct.UseVisualStyleBackColor = true;
             this.btnMaintainAct.Click += new System.EventHandler(this.btnMaintainAct_Click);
@@ -165,10 +240,17 @@
             // 
             this.btnLogOut.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogOut.BackgroundImage")));
             this.btnLogOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnLogOut.Location = new System.Drawing.Point(447, 404);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(144, 46);
+=======
             this.btnLogOut.Location = new System.Drawing.Point(596, 497);
             this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(192, 57);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnLogOut.TabIndex = 10;
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
@@ -177,19 +259,33 @@
             // 
             this.btnHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelp.BackgroundImage")));
             this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+<<<<<<< HEAD
+            this.btnHelp.Location = new System.Drawing.Point(486, 12);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(105, 33);
+=======
             this.btnHelp.Location = new System.Drawing.Point(648, 14);
             this.btnHelp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(140, 41);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.btnHelp.TabIndex = 11;
             this.btnHelp.UseVisualStyleBackColor = true;
             // 
             // Dashboard_Form
             // 
+<<<<<<< HEAD
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(600, 459);
+=======
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 565);
+>>>>>>> 41e3b0f8eccda016898b78e16d0a424434172b77
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnMaintainAct);
@@ -202,7 +298,7 @@
             this.Controls.Add(this.btnBookClient);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "Dashboard_Form";
             this.Text = "Dashboard_Form";
             this.Load += new System.EventHandler(this.Dashboard_Form_Load);
