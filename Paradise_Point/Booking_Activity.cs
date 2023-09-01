@@ -117,8 +117,16 @@ namespace Paradise_Point
 
                 string sqlNum = "SELECT MAX(BookingActNum) AS Count FROM BOOKINGACTIVITY";
                 command = new SqlCommand(sqlNum, conn);
-                bookingActNum = (int)command.ExecuteScalar();
+                object result = command.ExecuteScalar();
                 command.Dispose();
+                if (result != null && result != DBNull.Value)
+                {
+                    bookingActNum = (int)result;
+                }
+                else
+                {
+                    bookingActNum = 0;
+                }
                 bookingActNum += 1;
                 conn.Close();
 
@@ -276,6 +284,39 @@ namespace Paradise_Point
             }
         }
 
+        public bool Errors()
+        {
+
+            bool hasError = false;
+
+            if (cmbID.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an ID ");
+                hasError = true;
+            }
+            if (cmbActivities.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an Activity ");
+                hasError = true;
+            }
+            if (String.IsNullOrWhiteSpace(txtDate.Text))
+            {
+                //error provider
+                errDate.SetError(txtDate, "Date is required.");
+                hasError = true;
+            }
+            if (String.IsNullOrWhiteSpace(txtTime.Text))
+            {
+                //error provider
+                errorTime.SetError(txtTime, "time is required.");
+                hasError = true;
+            }
+
+
+            return hasError;
+
+        }
+
         private void Booking_Activity_Load(object sender, EventArgs e)
         {
             estabConnection();
@@ -315,13 +356,40 @@ namespace Paradise_Point
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            insert();
-            cmbID.SelectedIndex = 0;
-            cmbActivities.SelectedIndex = 0;
-            nudNumPartisipants.Value = 1;
 
-            displayInformation();
-            cmbID.Focus();
+            if (Errors())
+            {
+                // An error occurred, exit early
+                return;
+            }
+            else
+            {
+                insert();
+                cmbID.SelectedIndex = 0;
+                cmbActivities.SelectedIndex = 0;
+                nudNumPartisipants.Value = 1;
+
+                displayInformation();
+                cmbID.Focus();
+            }
+        }
+
+        private void txtDate_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtDate.Text))
+            {
+                // Clear the error message
+                errDate.SetError(txtDate, "");
+            }
+        }
+
+        private void txtTime_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtTime.Text))
+            {
+                // Clear the error message
+                errorTime.SetError(txtTime, "");
+            }
         }
     }
 }
