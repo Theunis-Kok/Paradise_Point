@@ -24,6 +24,7 @@ namespace Paradise_Point
         int timeDuration = 0;
         double price = 0;
         int iActNum = 0;
+        int UnitNumber = 0;
 
         bool bInsert = false;
         bool bUpdate = false;
@@ -138,10 +139,8 @@ namespace Paradise_Point
                     conn.Open();
                 }
 
-                string sqlNum = "SELECT  FROM ACTIVITY";
-                
 
-                string update = $"UPDATE ACTIVITY SET activityName = '" + cmbName.SelectedItem.ToString() + "', timeDuration = " + txtTimeDuration.Text + ", price = " + txtPrice.Text + " WHERE ActNum = " + actNum + "";
+                string update = $"UPDATE ACTIVITY SET timeDuration = " + txtTimeDuration.Text + ", price = " + txtPrice.Text + " WHERE activityName = '" + cmbName.SelectedItem.ToString() + "'";
                 command = new SqlCommand(update, conn);
 
                 adapter = new SqlDataAdapter();
@@ -371,6 +370,7 @@ namespace Paradise_Point
                 txtPrice.Enabled = true;
 
                 cmbName.Enabled = false;
+                cmbName.Enabled = false;
                 cmbSupervisor.Enabled = false;
 
                 btnSave.Visible = true;
@@ -378,6 +378,7 @@ namespace Paradise_Point
                 btnInsert.Enabled = false;
                 btnDelete.Enabled = false;
                 btnUpdate.Enabled = false;
+
             }
             catch (SqlException ex)
             {
@@ -413,7 +414,7 @@ namespace Paradise_Point
                     selectCorrectSupervisor();
                     displayData();
 
-                    bInsert = true;
+                    bInsert = false;
                 }
                 else
                 {
