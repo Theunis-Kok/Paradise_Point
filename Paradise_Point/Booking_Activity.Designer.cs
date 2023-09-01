@@ -51,12 +51,16 @@
             this.errorNumParticipant = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorDate = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorTime = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errDate = new System.Windows.Forms.ErrorProvider(this.components);
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudNumPartisipants)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorClientID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorActivities)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorNumParticipant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -113,7 +117,7 @@
             // 
             this.cmbActivities.FormattingEnabled = true;
             this.cmbActivities.Location = new System.Drawing.Point(336, 248);
-            this.cmbActivities.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbActivities.Margin = new System.Windows.Forms.Padding(4);
             this.cmbActivities.Name = "cmbActivities";
             this.cmbActivities.Size = new System.Drawing.Size(362, 33);
             this.cmbActivities.TabIndex = 5;
@@ -122,18 +126,20 @@
             // txtDate
             // 
             this.txtDate.Location = new System.Drawing.Point(336, 450);
-            this.txtDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(362, 31);
             this.txtDate.TabIndex = 6;
+            this.txtDate.TextChanged += new System.EventHandler(this.txtDate_TextChanged);
             // 
             // txtTime
             // 
             this.txtTime.Location = new System.Drawing.Point(336, 544);
-            this.txtTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTime.Margin = new System.Windows.Forms.Padding(4);
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(362, 31);
             this.txtTime.TabIndex = 7;
+            this.txtTime.TextChanged += new System.EventHandler(this.txtTime_TextChanged);
             // 
             // lblPrice
             // 
@@ -150,7 +156,7 @@
             this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.Location = new System.Drawing.Point(160, 771);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(314, 83);
             this.btnCancel.TabIndex = 10;
@@ -162,7 +168,7 @@
             this.btnBook.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBook.BackgroundImage")));
             this.btnBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBook.Location = new System.Drawing.Point(638, 771);
-            this.btnBook.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBook.Margin = new System.Windows.Forms.Padding(4);
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(314, 83);
             this.btnBook.TabIndex = 11;
@@ -174,7 +180,7 @@
             this.btnHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelp.BackgroundImage")));
             this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHelp.Location = new System.Drawing.Point(898, 19);
-            this.btnHelp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(4);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(236, 67);
             this.btnHelp.TabIndex = 12;
@@ -185,7 +191,7 @@
             this.btnBack.BackgroundImage = global::Paradise_Point.Properties.Resources.Back;
             this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBack.Location = new System.Drawing.Point(24, 19);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(6);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(250, 67);
             this.btnBack.TabIndex = 14;
@@ -206,7 +212,7 @@
             // 
             this.cmbID.FormattingEnabled = true;
             this.cmbID.Location = new System.Drawing.Point(336, 135);
-            this.cmbID.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cmbID.Margin = new System.Windows.Forms.Padding(6);
             this.cmbID.Name = "cmbID";
             this.cmbID.Size = new System.Drawing.Size(362, 33);
             this.cmbID.TabIndex = 16;
@@ -214,7 +220,7 @@
             // nudNumPartisipants
             // 
             this.nudNumPartisipants.Location = new System.Drawing.Point(440, 348);
-            this.nudNumPartisipants.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.nudNumPartisipants.Margin = new System.Windows.Forms.Padding(6);
             this.nudNumPartisipants.Maximum = new decimal(new int[] {
             50,
             0,
@@ -255,6 +261,14 @@
             // 
             this.errorTime.ContainerControl = this;
             // 
+            // errDate
+            // 
+            this.errDate.ContainerControl = this;
+            // 
+            // err
+            // 
+            this.err.ContainerControl = this;
+            // 
             // Booking_Activity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -277,7 +291,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Booking_Activity";
             this.Text = "Booking_Activity";
             this.Load += new System.EventHandler(this.Booking_Activity_Load);
@@ -287,6 +301,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorNumParticipant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +331,7 @@
         private System.Windows.Forms.ErrorProvider errorNumParticipant;
         private System.Windows.Forms.ErrorProvider errorDate;
         private System.Windows.Forms.ErrorProvider errorTime;
+        private System.Windows.Forms.ErrorProvider errDate;
+        private System.Windows.Forms.ErrorProvider err;
     }
 }
