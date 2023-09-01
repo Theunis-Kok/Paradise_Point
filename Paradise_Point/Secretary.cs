@@ -15,6 +15,8 @@ namespace Paradise_Point
     {
 
         SqlConnection conn;
+        SqlCommand cmd;
+        SqlDataAdapter adapter;
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
 
@@ -40,7 +42,38 @@ namespace Paradise_Point
 
         private void Secretary_Load(object sender, EventArgs e)
         {
-      
+            conn = new SqlConnection(connString);
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
+            try
+            {
+                string query = "SELECT FirstName, LastName FROM EMPLOYEE WHERE isSecretary = 1";  
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())  
+                        {
+                            string firstName = reader["FirstName"].ToString();
+                            string lastName = reader["LastName"].ToString();
+
+                            lblUserName.Text = $"Welcome, Secretary {firstName} {lastName}!";
+                        }
+                        else
+                        {
+                            MessageBox.Show("No secretary found.");
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnBookAct_Click(object sender, EventArgs e)
