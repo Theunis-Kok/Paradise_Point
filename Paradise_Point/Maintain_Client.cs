@@ -64,7 +64,7 @@ namespace Paradise_Point
 
 
                 // Populate ComboBox
-                string select_query = "A";
+                string select_query = "SELECT ClientNum FROM CLIENT";
                 command = new SqlCommand(select_query, conn);
                 reader = command.ExecuteReader();
                 
@@ -353,52 +353,7 @@ namespace Paradise_Point
         private void Maintain_Client_Load_1(object sender, EventArgs e)
         {
             PopulateComboBox();
-            /*try
-            {
-                
-                conn = new SqlConnection(connString);
-                if (conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-
-                
-
-                // Populate ComboBox
-                string select_query = "SELECT ClientNum FROM CLIENT";
-                command = new SqlCommand(select_query, conn);
-                reader = command.ExecuteReader();
-
-                // Clear existing items
-                cmbSelectID.Items.Clear();
-
-                // Populate ComboBox with values from the reader
-                while (reader.Read())
-                {
-                    cmbSelectID.Items.Add(reader["ClientNum"].ToString());
-                }
-
-                reader.Close();
-
-                // Set the selected index to 0 (display the first value)
-                if (cmbSelectID.Items.Count > 0)
-                {
-                    cmbSelectID.SelectedIndex = 0;
-                }
-
-                conn.Close();
-
-            }
-            catch (SqlException error)
-            {
-                MessageBox.Show(error.Message);
-            }
-
-            txtFirstName.Enabled = false;
-            txtLastName.Enabled = false;
-            txtID.Enabled = false;
-            txtCellPhone.Enabled = false;
-            txtEmail.Enabled = false;*/
+            
         }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
