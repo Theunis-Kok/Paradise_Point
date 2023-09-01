@@ -112,5 +112,12 @@ namespace Paradise_Point
             allocating_Staff.ShowDialog();
             this.Hide();
         }
+
+        private void btnBookClient_Click(object sender, EventArgs e)
+        {
+            Booking_Client booking_Client = new Booking_Client();
+            booking_Client.ShowDialog();
+            this.Hide();
+        }
     }
 }

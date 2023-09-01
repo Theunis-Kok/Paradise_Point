@@ -18,6 +18,7 @@ namespace Paradise_Point
         SqlDataAdapter adapter1;
         SqlDataReader reader;
         DataSet ds;
+        DateTime dateLeaving;
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
 
@@ -25,6 +26,67 @@ namespace Paradise_Point
         public Booking_Client()
         {
             InitializeComponent();
+        }
+
+        public void pupulateUnits()
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+
+            // Populate ComboBox
+            string select_query2 = "SELECT UnitNum FROM UNIT";
+            command = new SqlCommand(select_query2, conn);
+            reader = command.ExecuteReader();
+
+            // Clear existing items
+            cmbUnitNum.Items.Clear();
+
+            // Populate ComboBox with values from the reader
+            while (reader.Read())
+            {
+                cmbUnitNum.Items.Add(reader["UnitNum"].ToString());
+            }
+            reader.Close();
+            command.Dispose();
+            conn.Close();
+
+            MessageBox.Show(cmbUnitNum.Items.Count.ToString());
+            if (cmbUnitNum.Items.Count > -1)
+            {
+                cmbUnitNum.SelectedIndex = 0;
+            }
+        }
+
+        public void displayUnit()
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            command.Dispose();
+            reader.Close();
+
+            // Populate ComboBox
+            string select_query2 = "SELECT location FROM UNIT where UnitNum = " + cmbUnitNum.SelectedItem.ToString();
+            command = new SqlCommand(select_query2, conn);
+            reader = command.ExecuteReader();
+
+          
+            string sLocation = "";
+
+            // Populate ComboBox with values from the reader
+            while (reader.Read())
+            {
+                sLocation = reader.GetString(0);
+            }
+
+            lblUnitName.Text = sLocation;
+
+            reader.Close();
+            command.Dispose();
+            conn.Close();
         }
 
         private void Booking_Client_Load(object sender, EventArgs e)
@@ -36,27 +98,12 @@ namespace Paradise_Point
                 conn.Open();
 
                 //sucess loaded
-                MessageBox.Show("Database connection succesful");
+                //MessageBox.Show("Database connection succesful");
 
                 conn.Close();
 
-                conn.Open();
-
-                // Populate ComboBox
-                string select_query2 = "SELECT UnitNum FROM UNIT";
-                command = new SqlCommand(select_query2, conn);
-                reader = command.ExecuteReader();
-
-                // Clear existing items
-                cmbUnitNum.Items.Clear();
-
-                // Populate ComboBox with values from the reader
-                while (reader.Read())
-                {
-                    cmbUnitNum.Items.Add(reader["UnitNum"].ToString());
-                }
-
-                conn.Close();
+                pupulateUnits();
+                displayUnit();
 
                 conn.Open();
 
@@ -75,6 +122,8 @@ namespace Paradise_Point
                 }
 
                 reader.Close();
+                command.Dispose();
+                
 
                 // Set the selected index to 0 (display the first value)
                 if (cmbID.Items.Count > 0)
@@ -113,6 +162,11 @@ namespace Paradise_Point
                 reader.Close();
 
                 conn.Close();
+
+                DateTime currentDate = DateTime.Now;
+                dateLeaving = currentDate.AddDays(1);
+                string sdateLeaving = dateLeaving.ToString("yyyy-MM-dd");
+                lblDateLeave.Text = sdateLeaving;
 
             }
             catch (SqlException error)
@@ -170,26 +224,58 @@ namespace Paradise_Point
             {
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
-                    conn.Open();
+                    if(conn.State == ConnectionState.Closed)
+                    { 
+                        conn.Open();
+                    }
 
+                    /*string display = "SELECT ClientNum FROM CLIENT WHERE id = " + cmbID.SelectedItem.ToString();
+                    command = new SqlCommand(display, conn);
+                    reader = command.ExecuteReader();
+                    
+
+                    while(reader.Read())
+                    {
+                        sClientNum = reader.GetString(0);
+                    }
+
+                    reader.Close();*/
+                    command.Dispose();
+                    string sClientNum = cmbID.SelectedItem.ToString();
+
+                    int iNumber = 0;
+                    string sqlNumber = "SELECT MAX(BookingNum) AS RecordCount FROM BOOKINGCLIENT";
+                    command = new SqlCommand(sqlNumber, conn);
+                    object result = command.ExecuteScalar();
+                    command.Dispose();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        iNumber = (int)result;
+                    }
+                    else
+                    {
+                        iNumber = 0;
+                    }
+                    iNumber++;
+
+                    DateTime currentDate = DateTime.Now;
+
+                    string currentDateAsString = currentDate.ToString("yyyy-MM-dd");
+                    string leaveDateAsString = lblDateLeave.Text;
+
+                    
                     // Insert a new booking
-                    string insertQuery = "INSERT INTO BOOKCLIENT (bookIn, bookOut, ClientNum, UnitNum) " +"VALUES (@bookIn, @bookOut, @ClientNum, @UnitNum); "+"SELECT SCOPE_IDENTITY()";
+                    string insertQuery = $"INSERT INTO BOOKINGCLIENT (BookingNum, bookIn, bookOut, ClientNum, UnitNum) VALUES ("+iNumber+",'"+currentDateAsString+"','"+leaveDateAsString+"',"+sClientNum+","+cmbUnitNum.SelectedItem.ToString()+")";
+                    command = new SqlCommand(insertQuery, conn);
+                    adapter1 = new SqlDataAdapter();
+                    adapter1.InsertCommand = command;
+                    adapter1.InsertCommand.ExecuteNonQuery();
 
-                    SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
-
-                    // Replace these placeholders with actual values
-                    //insertCommand.Parameters.AddWithValue("@bookIn",);
-                    //insertCommand.Parameters.AddWithValue("@bookOut",);
-                    //insertCommand.Parameters.AddWithValue("@ClientNum", Convert.ToInt32(cmbID.SelectedItem));
-                    //insertCommand.Parameters.AddWithValue("@UnitNum", Convert.ToInt32(());
-
-                    // Execute the query and get the generated BookNum
-                    int generatedBookNum = Convert.ToInt32(insertCommand.ExecuteScalar());
-
+                    command.Dispose();
                     conn.Close();
 
                     // Now you have the generated BookNum for further use
-                    MessageBox.Show("Booking added successfully. BookingNum: " + generatedBookNum);
+                    MessageBox.Show("Booking added successfully. BookingNum: " + iNumber);
                 }
             }
             catch (SqlException ex)
@@ -201,6 +287,7 @@ namespace Paradise_Point
         private void cmbUnitNum_SelectedIndexChanged(object sender, EventArgs e)
         {
             //waar lable moet kom
+            displayUnit();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -208,6 +295,14 @@ namespace Paradise_Point
             Dashboard_Form dash = new Dashboard_Form();
             dash.Show();
             this.Hide();
+        }
+
+        private void nudDays_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime currentDate = DateTime.Now;
+            dateLeaving = currentDate.AddDays(Convert.ToInt32(nudDays.Value));
+            string sdateLeaving = dateLeaving.ToString("yyyy-MM-dd");
+            lblDateLeave.Text = sdateLeaving;
         }
     }
 }

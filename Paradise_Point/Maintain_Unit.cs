@@ -29,7 +29,7 @@ namespace Paradise_Point
             InitializeComponent();
         }
 
-        public void UpdateComboBox()
+        public void updateComboBox()
         {
             cmbID.Items.Clear();
             if (conn.State == ConnectionState.Closed)
@@ -102,7 +102,7 @@ namespace Paradise_Point
             conn.Close();
         }
 
-        public void InsertIntoTable()
+        public void insertIntoUnit()
         {
             if (MessageBox.Show("Are jou sure that you want to insert this Unit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -150,14 +150,14 @@ namespace Paradise_Point
                 btnSave.Visible = false;
 
 
-                UpdateComboBox();
+                updateComboBox();
                 MessageBox.Show("The record was updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
         }
 
-        public void UpdateTable()
+        public void updateUnit()
         {
             if (MessageBox.Show("Are jou sure that you want to update this Unit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -200,7 +200,7 @@ namespace Paradise_Point
                 btnSave.Visible = false;
 
 
-                UpdateComboBox();
+                updateComboBox();
                 MessageBox.Show("The record was updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -298,13 +298,13 @@ namespace Paradise_Point
                 {
 
 
-                    InsertIntoTable();
+                    insertIntoUnit();
                 }
                 else
                 {
 
 
-                    UpdateTable();
+                    updateUnit();
                 }
             }
         }
@@ -337,7 +337,7 @@ namespace Paradise_Point
 
                     MessageBox.Show("The record was removed!", "Removed Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    UpdateComboBox();
+                    updateComboBox();
                     displayInfo();
 
                 }
