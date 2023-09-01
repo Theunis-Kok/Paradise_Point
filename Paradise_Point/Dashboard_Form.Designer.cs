@@ -49,7 +49,11 @@
             this.lblUserName.AutoSize = true;
             this.lblUserName.Location = new System.Drawing.Point(91, 30);
             this.lblUserName.Name = "lblUserName";
+<<<<<<< HEAD
+            this.lblUserName.Size = new System.Drawing.Size(75, 16);
+=======
             this.lblUserName.Size = new System.Drawing.Size(80, 17);
+>>>>>>> d3cda3912140886a962542a127146cb92fbb128f
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "Bob Burger";
             // 
@@ -201,6 +205,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Dashboard_Form";
             this.Text = "Dashboard_Form";
+            this.Load += new System.EventHandler(this.Dashboard_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
