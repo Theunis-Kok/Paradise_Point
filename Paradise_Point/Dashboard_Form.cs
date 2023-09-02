@@ -63,7 +63,7 @@ namespace Paradise_Point
             this.Hide();
         }
 
-<<<<<<< HEAD
+
         private void Dashboard_Form_Load(object sender, EventArgs e)
         {
             conn = new SqlConnection(connString);
@@ -98,13 +98,21 @@ namespace Paradise_Point
             {
                 MessageBox.Show(ex.Message);
             }
-=======
+        }
+
         private void btnAllocateStaff_Click(object sender, EventArgs e)
         {
             Allocating_Staff allocating_Staff = new Allocating_Staff();
             allocating_Staff.ShowDialog();
             this.Hide();
->>>>>>> d3cda3912140886a962542a127146cb92fbb128f
+
+        }
+
+        private void btnReqReport_Click(object sender, EventArgs e)
+        {
+            Request_Report reqReport = new Request_Report();
+            reqReport.ShowDialog();
+            this.Close();
         }
     }
 }

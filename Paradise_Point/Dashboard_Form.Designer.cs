@@ -49,11 +49,7 @@
             this.lblUserName.AutoSize = true;
             this.lblUserName.Location = new System.Drawing.Point(91, 30);
             this.lblUserName.Name = "lblUserName";
-<<<<<<< HEAD
             this.lblUserName.Size = new System.Drawing.Size(75, 16);
-=======
-            this.lblUserName.Size = new System.Drawing.Size(80, 17);
->>>>>>> d3cda3912140886a962542a127146cb92fbb128f
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "Bob Burger";
             // 
@@ -112,6 +108,7 @@
             this.btnReqReport.Size = new System.Drawing.Size(192, 57);
             this.btnReqReport.TabIndex = 5;
             this.btnReqReport.UseVisualStyleBackColor = true;
+            this.btnReqReport.Click += new System.EventHandler(this.btnReqReport_Click);
             // 
             // btnMaintainClient
             // 
