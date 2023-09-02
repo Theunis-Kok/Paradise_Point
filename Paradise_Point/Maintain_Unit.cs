@@ -29,7 +29,7 @@ namespace Paradise_Point
             InitializeComponent();
         }
 
-        public void UpdateComboBox()
+        public void updateComboBox()
         {
             cmbID.Items.Clear();
             if (conn.State == ConnectionState.Closed)
@@ -102,7 +102,7 @@ namespace Paradise_Point
             conn.Close();
         }
 
-        public void InsertIntoTable()
+        public void insertIntoUnit()
         {
             if (MessageBox.Show("Are jou sure that you want to insert this Unit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -150,14 +150,14 @@ namespace Paradise_Point
                 btnSave.Visible = false;
 
 
-                UpdateComboBox();
+                updateComboBox();
                 MessageBox.Show("The record was updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
         }
 
-        public void UpdateTable()
+        public void updateUnit()
         {
             if (MessageBox.Show("Are jou sure that you want to update this Unit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -200,9 +200,35 @@ namespace Paradise_Point
                 btnSave.Visible = false;
 
 
-                UpdateComboBox();
+                updateComboBox();
                 MessageBox.Show("The record was updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        public bool Errors()
+        {
+
+            bool hasError = false;
+
+            if (cmbID.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an ID ");
+                hasError = true;
+            }
+            if (String.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                //error provider
+                errPrice.SetError(txtPrice, "Price is required.");
+                hasError = true;
+            }
+            if (cmbLocation.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Location");
+                hasError = true;
+            }
+
+            return hasError;
+
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -213,8 +239,8 @@ namespace Paradise_Point
             txtPrice.Enabled = true;
             cmbLocation.Enabled = true;
 
-            nudNoBath.Value = 0;
-            nudNoBeds.Value = 0;
+            nudNoBath.Value = 1;
+            nudNoBeds.Value = 1;
             txtPrice.Text = "";
             cmbLocation.SelectedIndex = 0;
 
@@ -260,13 +286,26 @@ namespace Paradise_Point
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (bInsert == true)
+
+            if (Errors())
             {
-                InsertIntoTable();
+                // An error occurred, exit early
+                return;
             }
             else
             {
-                UpdateTable();
+                if (bInsert == true)
+                {
+
+
+                    insertIntoUnit();
+                }
+                else
+                {
+
+
+                    updateUnit();
+                }
             }
         }
 
@@ -298,7 +337,7 @@ namespace Paradise_Point
 
                     MessageBox.Show("The record was removed!", "Removed Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    UpdateComboBox();
+                    updateComboBox();
                     displayInfo();
 
                 }
@@ -363,6 +402,15 @@ namespace Paradise_Point
             nudNoBeds.Enabled = false;
             txtPrice.Enabled = false;
             cmbLocation.Enabled = false;
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                // Clear the error message
+                errPrice.SetError(txtPrice, "");
+            }
         }
     }
 }

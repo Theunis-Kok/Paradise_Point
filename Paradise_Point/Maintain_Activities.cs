@@ -24,6 +24,7 @@ namespace Paradise_Point
         int timeDuration = 0;
         double price = 0;
         int iActNum = 0;
+        int UnitNumber = 0;
 
         bool bInsert = false;
         bool bUpdate = false;
@@ -53,18 +54,19 @@ namespace Paradise_Point
         {
             try
             {
+
                 if(conn.State == ConnectionState.Closed)
                 {
                     conn.Open();
                 }
 
-                string display = "SELECT ActNum, timeDuration, price FROM ACTIVITY WHERE activityName = '" + cmbName.Text + "'";
+                string display = "SELECT ActNum, timeDuration, price FROM ACTIVITY WHERE activityName = '" + cmbName.SelectedItem.ToString() + "'";
                 command = new SqlCommand(display, conn);
                 reader = command.ExecuteReader();
 
                 while(reader.Read())
                 {
-                    actNum = reader.GetInt32(0);
+                 //   actNum = reader.GetInt32(0);
                     timeDuration = reader.GetInt32(1);
                     price = Convert.ToDouble( reader.GetValue(2));
 
@@ -137,7 +139,8 @@ namespace Paradise_Point
                     conn.Open();
                 }
 
-                string update = $"UPDATE ACTIVITY SET activityName = '" + cmbName.SelectedItem.ToString() + "', timeDuration = " + txtTimeDuration.Text + ", price = " + txtPrice.Text + " WHERE ActNum = " + actNum + "";
+
+                string update = $"UPDATE ACTIVITY SET timeDuration = " + txtTimeDuration.Text + ", price = " + txtPrice.Text + " WHERE activityName = '" + cmbName.SelectedItem.ToString() + "'";
                 command = new SqlCommand(update, conn);
 
                 adapter = new SqlDataAdapter();
@@ -157,8 +160,11 @@ namespace Paradise_Point
         {
             try
             {
-                conn = new SqlConnection(connString);
-                conn.Open();
+
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
 
                 string populateName = "SELECT DISTINCT activityName FROM ACTIVITY";
                 command = new SqlCommand(populateName, conn);
@@ -172,6 +178,7 @@ namespace Paradise_Point
                 reader.Close();
                 command.Dispose();
                 conn.Close();
+                cmbName.SelectedIndex = 0;
             }
             catch (SqlException ex)
             {
@@ -183,27 +190,62 @@ namespace Paradise_Point
         {
             try
             {
-                conn = new SqlConnection(connString);
                 if (conn.State == ConnectionState.Closed)
                 {
                     conn.Open();
                 }
 
-                string populateSup = "SELECT DISTINCT firstName FROM EMPLOYEE WHERE activityInvolvedIn = '" + cmbName.Text + "'";
+                string populateSup = "SELECT DISTINCT firstName, lastName FROM EMPLOYEE";// WHERE activityInvolvedIn = '" + cmbName.SelectedItem.ToString() + "'";
                 command = new SqlCommand(populateSup, conn);
                 reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    cmbSupervisor.Items.Add(reader.GetValue(0));
-                    cmbSupervisor.SelectedIndex = 0;
+                    cmbSupervisor.Items.Add(reader.GetValue(0) + " " + reader.GetValue(1));
+                    
                 }
 
                 reader.Close();
                 command.Dispose();
                 conn.Close();
+               // cmbSupervisor.SelectedIndex = 0;
 
-                displayData();
+                //displayData();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("The following error occurred: " + ex.ToString());
+            }
+        }
+
+        public void selectCorrectSupervisor()
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                string populateSup = "SELECT DISTINCT firstName, lastName FROM EMPLOYEE WHERE activityInvolvedIn = '" + cmbName.SelectedItem.ToString() + "'";
+                command = new SqlCommand(populateSup, conn);
+                reader = command.ExecuteReader();
+
+                string firstName = "";
+                string lastName = "";
+
+                while (reader.Read())
+                {
+                    firstName = reader.GetString(0);
+                    lastName = reader.GetString(1);
+
+                }
+
+                cmbSupervisor.SelectedIndex = cmbSupervisor.Items.IndexOf(firstName + " " + lastName);
+
+                reader.Close();
+                command.Dispose();
+                conn.Close();
             }
             catch (SqlException ex)
             {
@@ -248,22 +290,69 @@ namespace Paradise_Point
             }
         }
 
+
+
+        public bool Errors()
+        {
+            bool hasError = false;
+
+            if (cmbName.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a Name");
+                hasError = true;
+            }
+            if (String.IsNullOrWhiteSpace(txtPrice.Text) || !decimal.TryParse(txtPrice.Text, out _))
+            {
+                //error provider
+                errPrice.SetError(txtPrice, "Enter Valid Price");
+
+                hasError = true;
+            }
+            if (String.IsNullOrWhiteSpace(txtTimeDuration.Text) || !decimal.TryParse(txtTimeDuration.Text, out _))
+            {
+                //error provider
+                errTime.SetError(txtTimeDuration, "Enter Valid Time Duration");
+
+                hasError = true;
+            }
+
+            return hasError;
+        }
+
+
+
         private void Maintain_Activities_Load(object sender, EventArgs e)
         {
+            conn = new SqlConnection(connString);
             txtTimeDuration.Enabled = false;
             txtPrice.Enabled = false;
+            cmbSupervisor.Enabled = false;
 
             btnSave.Visible = false;
             btnCancel.Visible = false;
 
             populateName();
+            populateSupervisor();
+            selectCorrectSupervisor();
+            displayData();
+
+            
         }
 
         private void cmbName_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                populateSupervisor();
+                if (bInsert == false)
+                {
+                    selectCorrectSupervisor();
+                    displayData();
+                }
+                else
+                {
+                    selectCorrectSupervisor();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -276,11 +365,17 @@ namespace Paradise_Point
             try
             {
                 bInsert = true;
-
                 cmbName.Items.Clear();
-                cmbName.Text = "";
-                cmbSupervisor.Items.Clear();
-                cmbSupervisor.Text = "";
+
+                cmbName.Items.Add("Surfing");
+                cmbName.Items.Add("Snorkeling");
+                cmbName.Items.Add("Hikes");
+                cmbName.Items.Add("MiniGolf");
+                cmbName.Items.Add("Yoga");
+                cmbName.Items.Add("VolleyBall");
+
+                cmbName.SelectedIndex = 0;
+                cmbSupervisor.SelectedIndex = -1;
                 txtTimeDuration.Text = "";
                 txtPrice.Text = "";
 
@@ -305,10 +400,16 @@ namespace Paradise_Point
                 txtTimeDuration.Enabled = true;
                 txtPrice.Enabled = true;
 
+                cmbName.Enabled = false;
+                cmbName.Enabled = false;
+                cmbSupervisor.Enabled = false;
+
                 btnSave.Visible = true;
                 btnCancel.Visible = true;
                 btnInsert.Enabled = false;
                 btnDelete.Enabled = false;
+                btnUpdate.Enabled = false;
+
             }
             catch (SqlException ex)
             {
@@ -332,17 +433,38 @@ namespace Paradise_Point
         {
             try
             {
-                cmbName.Items.Clear();
-                cmbName.Text = "";
-                cmbSupervisor.Items.Clear();
-                cmbSupervisor.Text = "";
-                txtTimeDuration.Text = "";
-                txtPrice.Text = "";
 
-                populateName();
+                cmbName.Items.Clear();
+                cmbSupervisor.Items.Clear();
+                //populateName();
+
+                if(bInsert == false)
+                {
+                    populateName();
+                    cmbName.SelectedIndex = 0;
+                    selectCorrectSupervisor();
+                    displayData();
+
+                    bInsert = false;
+                }
+                else
+                {
+                    populateName();
+                    cmbName.SelectedIndex = 0;
+                    selectCorrectSupervisor();
+                    displayData();
+
+                    bInsert = false;
+
+                }
+
+               // selectCorrectSupervisor();
+               
 
                 txtTimeDuration.Enabled = false;
                 txtPrice.Enabled = false;
+                cmbSupervisor.Enabled = false;
+                cmbName.Enabled = true;
 
                 btnSave.Visible = false;
                 btnCancel.Visible = false;
@@ -351,7 +473,8 @@ namespace Paradise_Point
                 btnUpdate.Enabled = true;
                 btnDelete.Enabled = true;
 
-                bInsert = false;
+                
+               
             }
             catch (Exception ex)
             {
@@ -368,33 +491,79 @@ namespace Paradise_Point
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (bInsert == true)
+
+            if (Errors())
             {
-                Insert();
-
-                cmbName.Items.Clear();
-                cmbName.Text = "";
-                cmbSupervisor.Items.Clear();
-                cmbSupervisor.Text = "";
-                txtTimeDuration.Text = "";
-                txtPrice.Text = "";
-
-                populateName();
-                populateSupervisor();
+                // An error occurred, exit early
+                return;
             }
             else
             {
-                update();
+                if (bInsert == true)
+                {
+                    Insert();
 
-                cmbName.Items.Clear();
-                cmbName.Text = "";
-                cmbSupervisor.Items.Clear();
-                cmbSupervisor.Text = "";
-                txtTimeDuration.Text = "";
-                txtPrice.Text = "";
+                    cmbName.Items.Clear();
+                    cmbName.Text = "";
 
-                populateName();
+                    cmbSupervisor.Items.Clear();
+                    cmbSupervisor.Text = "";
+
+                    txtTimeDuration.Text = "";
+                    txtPrice.Text = "";
+
+                    populateName();
+                    cmbName.SelectedIndex = 0;
+                    populateSupervisor();
+                }
+                else
+                {
+                    update();
+
+                    cmbName.Items.Clear();
+                    cmbName.Text = "";
+                    cmbSupervisor.Items.Clear();
+                    cmbSupervisor.Text = "";
+                    txtTimeDuration.Text = "";
+                    txtPrice.Text = "";
+
+                    populateName();
+                    cmbName.SelectedIndex = 0;
+                    populateSupervisor();
+                }
+                txtTimeDuration.Enabled = false;
+                txtPrice.Enabled = false;
+                cmbSupervisor.Enabled = false;
+                cmbName.Enabled = true;
+
+                btnSave.Visible = false;
+                btnCancel.Visible = false;
+
+                btnInsert.Enabled = true;
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                bInsert = false;
+                cmbName.SelectedIndex = 0;
                 populateSupervisor();
+                displayData();
+            }
+        }
+
+        private void txtTimeDuration_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtTimeDuration.Text))
+            {
+                // Clear the error message
+                errTime.SetError(txtTimeDuration, "");
+            }
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                // Clear the error message
+                errPrice.SetError(txtPrice, "");
             }
         }
     }

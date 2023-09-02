@@ -15,18 +15,95 @@ namespace Paradise_Point
     {
         SqlConnection conn;
         SqlCommand command;
-        SqlDataAdapter adapter;
         SqlDataReader reader;
-        DataSet ds;
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
 
         int iClientNum = 0;
         bool Upsert = false;
 
+        // Error providers for validation
+    
+        private ErrorProvider errorIDs = new ErrorProvider();
+        private ErrorProvider errorCellPhones = new ErrorProvider();
+        private ErrorProvider errorNames = new ErrorProvider();
+        private ErrorProvider errorLastNames = new ErrorProvider();
+        private ErrorProvider errorEmails = new ErrorProvider();
+
+
         public Maintain_Client()
         {
             InitializeComponent();
+            // Initialize error providers
+            
+            errorID.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorCellPhone.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+        }
+
+        private bool IsNumeric(string value)
+        {
+            return long.TryParse(value, out _);
+        }
+
+        private bool ContainsNumbers(string value)
+        {
+            return value.Any(char.IsDigit);
+        }
+
+        public void PopulateComboBox()
+        {
+            try
+            {
+
+                conn = new SqlConnection(connString);
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+
+
+                // Populate ComboBox
+                string select_query = "SELECT ClientNum FROM CLIENT";
+                command = new SqlCommand(select_query, conn);
+                reader = command.ExecuteReader();
+                
+                // Clear existing items
+                cmbSelectID.Items.Clear();
+
+                // Populate ComboBox with values from the reader
+                while (reader.Read())
+                {
+                    cmbSelectID.Items.Add(reader["ClientNum"].ToString());
+                }
+
+                reader.Close();
+
+                // Set the selected index to 0 (display the first value)
+                if (cmbSelectID.Items.Count > 0)
+                {
+                    cmbSelectID.SelectedIndex = 0;
+                }
+
+                conn.Close();
+
+            }
+            catch (SqlException error)
+            {
+                MessageBox.Show(error.Message);
+            }
+
+            txtFirstName.Enabled = false;
+            txtLastName.Enabled = false;
+            txtID.Enabled = false;
+            txtCellPhone.Enabled = false;
+            txtEmail.Enabled = false;
+
+            txtFirstName.Visible = true;
+            txtLastName.Visible = true;
+            txtID.Visible = true;
+            txtCellPhone.Visible = true;
+            txtEmail.Visible = true;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -35,6 +112,7 @@ namespace Paradise_Point
             btnSave.Visible = true;
             btnDelete.Enabled = false;
             btnInsert.Enabled = false;
+            btnUpdate.Enabled = false;
 
             txtFirstName.Enabled = true;
             txtLastName.Enabled = true;
@@ -93,6 +171,48 @@ namespace Paradise_Point
         {
             try
             {
+                // Clear existing error providers
+
+                errorID.Clear();
+                errorCellPhone.Clear();
+                errorName.Clear();
+                errorLastName.Clear();
+                errorEmail.Clear();
+
+                // Validate ID format (13 digits)
+                if (!IsNumeric(txtID.Text) || txtID.Text.Length != 13)
+                {
+                    errorID.SetError(txtID, "Invalid ID format (must be 13 digits).");
+                    return;
+                }
+
+                // Validate cellphone format (10 digits)
+                if (!IsNumeric(txtCellPhone.Text) || txtCellPhone.Text.Length != 10)
+                {
+                    errorCellPhone.SetError(txtCellPhone, "Invalid cellphone number format (must be 10 digits).");
+                    return;
+                }
+
+                // Validate first name (no numbers)
+                if (ContainsNumbers(txtFirstName.Text))
+                {
+                    errorName.SetError(txtFirstName, "First name cannot contain numbers.");
+                    return;
+                }
+
+                // Validate last name (no numbers)
+                if (ContainsNumbers(txtLastName.Text))
+                {
+                    errorLastName.SetError(txtLastName, "Last name cannot contain numbers.");
+                    return;
+                }
+
+                // Validate email (must contain @)
+                if (!txtEmail.Text.Contains("@"))
+                {
+                    errorEmail.SetError(txtEmail, "Invalid email format (must contain '@').");
+                    return;
+                }
 
                 if (Upsert == true)
                 {
@@ -103,15 +223,11 @@ namespace Paradise_Point
                         conn.Open();
                     }
 
-                    MessageBox.Show(" Connection Opened");
-
                     string sqlNumber = "Select MAX(ClientNum) AS ClientNum FROM CLIENT";
                     SqlCommand command1 = new SqlCommand(sqlNumber, conn);
                     iClientNum = (int)command1.ExecuteScalar();
                     command1.Dispose();
                     iClientNum += 1;
-
-                    MessageBox.Show("Got new primary key");
 
                     string insert_query = "INSERT INTO CLIENT(ClientNum,firstName,lastName,id,cellphone,email) VALUES (" + iClientNum + ",'" + txtFirstName.Text + "','" + txtLastName.Text + "','" + txtID.Text + "','" + txtCellPhone.Text + "','" + txtEmail.Text + "')";
 
@@ -122,8 +238,27 @@ namespace Paradise_Point
                     adapter.InsertCommand = command;
                     adapter.InsertCommand.ExecuteNonQuery();
                     //message that shows that data has been updated 
-                    MessageBox.Show("Updatede Data");
+                    MessageBox.Show("Data has been inserted successfully");
                     conn.Close();
+
+                    
+                    txtFirstName.Enabled = false;
+                    txtLastName.Enabled = false;
+                    txtID.Enabled = false;
+                    txtCellPhone.Enabled = false;
+                    txtEmail.Enabled = false;
+                    btnCancel.Visible = false;
+                    btnSave.Visible = false;
+
+                    btnDelete.Enabled = true;
+                    btnInsert.Enabled = true;
+                    btnUpdate.Enabled = true;
+
+                    PopulateComboBox();
+                    cmbSelectID.Enabled = true;
+                    cmbSelectID.SelectedIndex = 0;
+
+
                 }
                 else {
                     
@@ -173,14 +308,16 @@ namespace Paradise_Point
                             cmbSelectID.SelectedIndex = 0;
                         }
 
-                        // Clear textboxes
+                        /*// Clear textboxes
                         txtFirstName.Clear();
                         txtLastName.Clear();
                         txtID.Clear();
                         txtCellPhone.Clear();
-                        txtEmail.Clear();
+                        txtEmail.Clear();*/
 
                         // Disable textboxes and hide buttons
+                        cmbSelectID.Enabled = true;
+                        cmbSelectID.SelectedIndex = 0;
                         txtFirstName.Enabled = false;
                         txtLastName.Enabled = false;
                         txtID.Enabled = false;
@@ -188,6 +325,10 @@ namespace Paradise_Point
                         txtEmail.Enabled = false;
                         btnCancel.Visible = false;
                         btnSave.Visible = false;
+
+                        btnDelete.Enabled = true;
+                        btnInsert.Enabled = true;
+                        btnUpdate.Enabled = true;
                     }
                     else
                     {
@@ -196,8 +337,12 @@ namespace Paradise_Point
 
                     conn.Close();
                 }
-                
-                
+
+                PopulateComboBox();
+                cmbSelectID.Enabled = true;
+                cmbSelectID.SelectedIndex = 0;
+
+
             }
             catch (SqlException error)
             {
@@ -207,52 +352,8 @@ namespace Paradise_Point
 
         private void Maintain_Client_Load_1(object sender, EventArgs e)
         {
-            try
-            {
-                
-                conn = new SqlConnection(connString);
-                if (conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-
-                
-
-                // Populate ComboBox
-                string select_query = "SELECT ClientNum FROM CLIENT";
-                command = new SqlCommand(select_query, conn);
-                reader = command.ExecuteReader();
-
-                // Clear existing items
-                cmbSelectID.Items.Clear();
-
-                // Populate ComboBox with values from the reader
-                while (reader.Read())
-                {
-                    cmbSelectID.Items.Add(reader["ClientNum"].ToString());
-                }
-
-                reader.Close();
-
-                // Set the selected index to 0 (display the first value)
-                if (cmbSelectID.Items.Count > 0)
-                {
-                    cmbSelectID.SelectedIndex = 0;
-                }
-
-                conn.Close();
-
-            }
-            catch (SqlException error)
-            {
-                MessageBox.Show(error.Message);
-            }
-
-            txtFirstName.Enabled = false;
-            txtLastName.Enabled = false;
-            txtID.Enabled = false;
-            txtCellPhone.Enabled = false;
-            txtEmail.Enabled = false;
+            PopulateComboBox();
+            
         }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
@@ -314,6 +415,8 @@ namespace Paradise_Point
                 }
 
                 conn.Close();
+
+                PopulateComboBox();
 
             }//catch error for wrongs
             catch (SqlException error)
@@ -381,6 +484,8 @@ namespace Paradise_Point
             txtCellPhone.Enabled = true;
             txtEmail.Enabled = true;
 
+            btnInsert.Enabled = false;
+
             // Clear textboxes
             txtFirstName.Clear();
             txtLastName.Clear();
@@ -388,7 +493,7 @@ namespace Paradise_Point
             txtCellPhone.Clear();
             txtEmail.Clear();
             cmbSelectID.Items.Clear();
-            cmbSelectID.Text = "";
+            cmbSelectID.Text = "";  
 
             Upsert = true;
 

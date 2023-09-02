@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Maintain_Client));
             this.cmbSelectID = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +47,18 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.errorIDSelect = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorID = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorCellPhone = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorLastName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorIDSelect)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCellPhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLastName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbSelectID
@@ -222,6 +235,30 @@
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
+            // errorIDSelect
+            // 
+            this.errorIDSelect.ContainerControl = this;
+            // 
+            // errorID
+            // 
+            this.errorID.ContainerControl = this;
+            // 
+            // errorCellPhone
+            // 
+            this.errorCellPhone.ContainerControl = this;
+            // 
+            // errorName
+            // 
+            this.errorName.ContainerControl = this;
+            // 
+            // errorLastName
+            // 
+            this.errorLastName.ContainerControl = this;
+            // 
+            // errorEmail
+            // 
+            this.errorEmail.ContainerControl = this;
+            // 
             // Maintain_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -249,6 +286,12 @@
             this.Name = "Maintain_Client";
             this.Text = "Maintain_Client";
             this.Load += new System.EventHandler(this.Maintain_Client_Load_1);
+            ((System.ComponentModel.ISupportInitialize)(this.errorIDSelect)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCellPhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLastName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,5 +316,11 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.ErrorProvider errorIDSelect;
+        private System.Windows.Forms.ErrorProvider errorID;
+        private System.Windows.Forms.ErrorProvider errorCellPhone;
+        private System.Windows.Forms.ErrorProvider errorName;
+        private System.Windows.Forms.ErrorProvider errorLastName;
+        private System.Windows.Forms.ErrorProvider errorEmail;
     }
 }
