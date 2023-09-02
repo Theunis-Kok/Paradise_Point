@@ -50,11 +50,8 @@
             this.lblUserName.Location = new System.Drawing.Point(68, 24);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUserName.Name = "lblUserName";
-<<<<<<< HEAD
             this.lblUserName.Size = new System.Drawing.Size(75, 16);
-=======
             this.lblUserName.Size = new System.Drawing.Size(69, 15);
->>>>>>> 646322fb337574aff88e68126eaecf9baaa0b046
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "Bob Burger";
             // 

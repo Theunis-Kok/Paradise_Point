@@ -19,6 +19,7 @@ namespace Paradise_Point
         SqlDataReader reader;
         DataSet ds;
         DateTime dateLeaving;
+        public bool AdminDashBord = false;
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
 
@@ -320,9 +321,19 @@ namespace Paradise_Point
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Dashboard_Form dash = new Dashboard_Form();
-            dash.Show();
-            this.Hide();
+            if (AdminDashBord == true)
+            {
+                Dashboard_Form dash = new Dashboard_Form();
+                dash.Show();
+                this.Hide();
+            }
+            else
+            {
+                Secretary secretary = new Secretary();
+                secretary.Show();
+                this.Hide();
+            }
+
         }
 
         private void nudDays_ValueChanged(object sender, EventArgs e)

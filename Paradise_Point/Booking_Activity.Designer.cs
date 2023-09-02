@@ -41,7 +41,6 @@
             this.lblPrice = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnBook = new System.Windows.Forms.Button();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbID = new System.Windows.Forms.ComboBox();
@@ -66,88 +65,79 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(126, 248);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(84, 159);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 25);
+            this.label1.Size = new System.Drawing.Size(63, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Activities";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(126, 454);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(84, 291);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 25);
+            this.label2.Size = new System.Drawing.Size(38, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Date";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(126, 558);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(84, 357);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 25);
+            this.label3.Size = new System.Drawing.Size(39, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Time";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(126, 363);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(84, 232);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(228, 25);
+            this.label4.Size = new System.Drawing.Size(151, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Number of participants";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(126, 662);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(84, 424);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 25);
+            this.label5.Size = new System.Drawing.Size(40, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "Price";
             // 
             // cmbActivities
             // 
             this.cmbActivities.FormattingEnabled = true;
-            this.cmbActivities.Location = new System.Drawing.Point(336, 248);
-            this.cmbActivities.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbActivities.Location = new System.Drawing.Point(224, 159);
             this.cmbActivities.Name = "cmbActivities";
-            this.cmbActivities.Size = new System.Drawing.Size(362, 33);
+            this.cmbActivities.Size = new System.Drawing.Size(243, 24);
             this.cmbActivities.TabIndex = 5;
             this.cmbActivities.SelectedIndexChanged += new System.EventHandler(this.cmbActivities_SelectedIndexChanged);
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(336, 450);
-            this.txtDate.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDate.Location = new System.Drawing.Point(224, 288);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(362, 31);
+            this.txtDate.Size = new System.Drawing.Size(243, 22);
             this.txtDate.TabIndex = 6;
             this.txtDate.TextChanged += new System.EventHandler(this.txtDate_TextChanged);
             // 
             // txtTime
             // 
-            this.txtTime.Location = new System.Drawing.Point(336, 544);
-            this.txtTime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTime.Location = new System.Drawing.Point(224, 348);
             this.txtTime.Name = "txtTime";
-            this.txtTime.Size = new System.Drawing.Size(362, 31);
+            this.txtTime.Size = new System.Drawing.Size(243, 22);
             this.txtTime.TabIndex = 7;
             this.txtTime.TextChanged += new System.EventHandler(this.txtTime_TextChanged);
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(330, 662);
-            this.lblPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrice.Location = new System.Drawing.Point(220, 424);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(27, 25);
+            this.lblPrice.Size = new System.Drawing.Size(18, 17);
             this.lblPrice.TabIndex = 9;
             this.lblPrice.Text = "R";
             // 
@@ -155,10 +145,9 @@
             // 
             this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancel.Location = new System.Drawing.Point(160, 771);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Location = new System.Drawing.Point(107, 493);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(314, 83);
+            this.btnCancel.Size = new System.Drawing.Size(209, 53);
             this.btnCancel.TabIndex = 10;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -167,33 +156,21 @@
             // 
             this.btnBook.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBook.BackgroundImage")));
             this.btnBook.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBook.Location = new System.Drawing.Point(638, 771);
-            this.btnBook.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBook.Location = new System.Drawing.Point(425, 493);
             this.btnBook.Name = "btnBook";
-            this.btnBook.Size = new System.Drawing.Size(314, 83);
+            this.btnBook.Size = new System.Drawing.Size(209, 53);
             this.btnBook.TabIndex = 11;
             this.btnBook.UseVisualStyleBackColor = true;
             this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHelp.BackgroundImage")));
-            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHelp.Location = new System.Drawing.Point(898, 19);
-            this.btnHelp.Margin = new System.Windows.Forms.Padding(4);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(236, 67);
-            this.btnHelp.TabIndex = 12;
-            this.btnHelp.UseVisualStyleBackColor = true;
             // 
             // btnBack
             // 
             this.btnBack.BackgroundImage = global::Paradise_Point.Properties.Resources.Back;
             this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBack.Location = new System.Drawing.Point(24, 19);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(6);
+            this.btnBack.Location = new System.Drawing.Point(16, 12);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(250, 67);
+            this.btnBack.Size = new System.Drawing.Size(167, 43);
             this.btnBack.TabIndex = 14;
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
@@ -201,26 +178,26 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(132, 135);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Location = new System.Drawing.Point(88, 86);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 25);
+            this.label6.Size = new System.Drawing.Size(60, 17);
             this.label6.TabIndex = 15;
             this.label6.Text = "Client ID";
             // 
             // cmbID
             // 
             this.cmbID.FormattingEnabled = true;
-            this.cmbID.Location = new System.Drawing.Point(336, 135);
-            this.cmbID.Margin = new System.Windows.Forms.Padding(6);
+            this.cmbID.Location = new System.Drawing.Point(224, 86);
+            this.cmbID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbID.Name = "cmbID";
-            this.cmbID.Size = new System.Drawing.Size(362, 33);
+            this.cmbID.Size = new System.Drawing.Size(243, 24);
             this.cmbID.TabIndex = 16;
             // 
             // nudNumPartisipants
             // 
-            this.nudNumPartisipants.Location = new System.Drawing.Point(440, 348);
-            this.nudNumPartisipants.Margin = new System.Windows.Forms.Padding(6);
+            this.nudNumPartisipants.Location = new System.Drawing.Point(293, 223);
+            this.nudNumPartisipants.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nudNumPartisipants.Maximum = new decimal(new int[] {
             50,
             0,
@@ -232,7 +209,7 @@
             0,
             0});
             this.nudNumPartisipants.Name = "nudNumPartisipants";
-            this.nudNumPartisipants.Size = new System.Drawing.Size(262, 31);
+            this.nudNumPartisipants.Size = new System.Drawing.Size(175, 22);
             this.nudNumPartisipants.TabIndex = 17;
             this.nudNumPartisipants.Value = new decimal(new int[] {
             1,
@@ -271,15 +248,14 @@
             // 
             // Booking_Activity
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1154, 985);
+            this.ClientSize = new System.Drawing.Size(769, 630);
             this.Controls.Add(this.nudNumPartisipants);
             this.Controls.Add(this.cmbID);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnBook);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblPrice);
@@ -291,7 +267,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Booking_Activity";
             this.Text = "Booking_Activity";
             this.Load += new System.EventHandler(this.Booking_Activity_Load);
@@ -321,7 +296,6 @@
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnBook;
-        private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbID;

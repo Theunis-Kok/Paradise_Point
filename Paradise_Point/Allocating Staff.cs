@@ -17,6 +17,7 @@ namespace Paradise_Point
         SqlCommand command;
         SqlDataAdapter dataAdapter;
         SqlDataReader dataReader;
+        public bool AdminDashBord = false;
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
 
@@ -33,7 +34,8 @@ namespace Paradise_Point
         
         public void displayInfo()
         {
-            if(numberOfActivties >= 1 )
+
+            if (numberOfActivties >= 1 )
             {
                 lblAct1.Visible = true;
                 cmbStaff1.Visible = true;
@@ -264,6 +266,7 @@ namespace Paradise_Point
 
         public void getEmployeeName()
         {
+
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
@@ -348,13 +351,30 @@ namespace Paradise_Point
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Dashboard_Form dashboard_Form = new Dashboard_Form();
-            dashboard_Form.Show();
-            this.Hide();
+            if (AdminDashBord == true)
+            {
+                Dashboard_Form dashboard_Form = new Dashboard_Form();
+                dashboard_Form.Show();
+                this.Hide();
+            }
+            else
+            {
+                Secretary secretary = new Secretary();
+                secretary.Show();
+                this.Hide();
+            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            /*cmbStaff1.Items.Clear();
+            cmbStaff2.Items.Clear();
+            cmbStaff3.Items.Clear();
+            cmbStaff4.Items.Clear();
+            cmbStaff5.Items.Clear();
+            cmbStaff16.Items.Clear();*/
+
             getActivityName();
             getEmployeeName();
             displayInfo();
@@ -387,10 +407,6 @@ namespace Paradise_Point
                 sName1 = $"{arrActivityName[k].PadRight(30)} : {arrEmployeeName[k]}";
                 lstDisplay.Items.Add(sName1);
             }
-
-           
-
-           // MessageBox.Show("Roster for week: "+currentDateAsString+"\n"+sName1+"\n"+sName2 + "\n" + sName3 + "\n" + sName4 + "\n" + sName5 + "\n" + sName6);
 
         }
     }
