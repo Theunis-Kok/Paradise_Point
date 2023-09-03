@@ -16,5 +16,12 @@ namespace Paradise_Point
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Dashboard_Form dashboard_Form = new Dashboard_Form();
+            dashboard_Form.Show();
+            this.Close();
+        }
     }
 }

@@ -91,5 +91,12 @@ namespace Paradise_Point
             booking.Show();
             this.Hide();
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            Help_Form help = new Help_Form();
+            help.ShowDialog();
+            this.Hide();
+        }
     }
 }
