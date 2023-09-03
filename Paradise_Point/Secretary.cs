@@ -29,14 +29,14 @@ namespace Paradise_Point
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             Form1 loginForm = new Form1();
-            loginForm.ShowDialog();
+            loginForm.Show();
             this.Hide();
         }
 
         private void btnMaintainClient_Click(object sender, EventArgs e)
         {
             Maintain_Client maintain_Client = new Maintain_Client();
-            maintain_Client.ShowDialog();
+            maintain_Client.Show();
             this.Hide();
         }
 
@@ -80,8 +80,8 @@ namespace Paradise_Point
         private void btnBookClient_Click(object sender, EventArgs e)
         {
             Booking_Client book_Client = new Booking_Client();
-            book_Client.ShowDialog();
-
+            book_Client.Show();
+            this.Hide();
             
         }
 

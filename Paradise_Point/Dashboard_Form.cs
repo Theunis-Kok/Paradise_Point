@@ -19,6 +19,7 @@ namespace Paradise_Point
         SqlConnection conn;
         SqlCommand cmd;
         SqlDataAdapter adapter;
+        public Boolean AdminDashBord = false;
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
 
@@ -31,46 +32,54 @@ namespace Paradise_Point
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             Form1 loginForm = new Form1();
-            loginForm.ShowDialog();
+            loginForm.Show();
             this.Hide();
         }
 
         private void btnMaintainAct_Click(object sender, EventArgs e)
         {
             Maintain_Activities maintain_Activities = new Maintain_Activities();
-            maintain_Activities.ShowDialog();
+            maintain_Activities.Show();
             this.Hide();
         }
 
         private void btnMaintainClient_Click(object sender, EventArgs e)
         {
             Maintain_Client maintain_Client = new Maintain_Client();
-            maintain_Client.ShowDialog();
+            maintain_Client.AdminDashBord = true;
+            maintain_Client.Show();
             this.Hide();
         }
 
         private void btnMaintainUnit_Click_1(object sender, EventArgs e)
         {
             Maintain_Unit maintain_Unit = new Maintain_Unit();
-            maintain_Unit.ShowDialog();
+            maintain_Unit.Show();
             this.Hide();
         }
 
         private void btnMaintainEmployee_Click_1(object sender, EventArgs e)
         {
             Maintain_Employee maintain_employee = new Maintain_Employee();
-            maintain_employee.ShowDialog();
+            maintain_employee.Show();
             this.Hide();
         }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
         private void btnBookAct_Click(object sender, EventArgs e)
         {
             Booking_Activity booking = new Booking_Activity();
+            booking.AdminDashBord = true;
             booking.Show();
             this.Hide();
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
 
         private void Dashboard_Form_Load(object sender, EventArgs e)
         {
@@ -108,31 +117,43 @@ namespace Paradise_Point
             }
         }
 
+<<<<<<< HEAD
 
         
 
+=======
+>>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
         private void btnAllocateStaff_Click_1(object sender, EventArgs e)
         {
             Allocating_Staff allocating_Staff = new Allocating_Staff();
-            allocating_Staff.ShowDialog();
+            allocating_Staff.AdminDashBord = true;
+            allocating_Staff.Show();
             this.Hide();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
 
         }
 
         private void btnReqReport_Click(object sender, EventArgs e)
         {
             Request_Report reqReport = new Request_Report();
-            reqReport.ShowDialog();
+            reqReport.Show();
             this.Close();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
         }
 
         private void btnBookClient_Click(object sender, EventArgs e)
         {
             Booking_Client booking_Client = new Booking_Client();
-            booking_Client.ShowDialog();
+            booking_Client.AdminDashBord = true;
+            booking_Client.Show();
             this.Hide();
+<<<<<<< HEAD
 
         }
 
@@ -141,6 +162,8 @@ namespace Paradise_Point
             Help_Form help_Form = new Help_Form();
             help_Form.ShowDialog();
             this.Hide();
+=======
+>>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
         }
     }
 }
