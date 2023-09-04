@@ -12,6 +12,9 @@ namespace Paradise_Point
 {
     public partial class Help_Form : Form
     {
+
+        public bool AdminDashBord = false;
+
         public Help_Form()
         {
             InitializeComponent();
@@ -19,9 +22,18 @@ namespace Paradise_Point
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Dashboard_Form dashboard_Form = new Dashboard_Form();
-            dashboard_Form.Show();
-            this.Close();
+            if (AdminDashBord == true)
+            {
+                Dashboard_Form dash = new Dashboard_Form();
+                dash.Show();
+                this.Hide();
+            }
+            else
+            {
+                Secretary secretary = new Secretary();
+                secretary.Show();
+                this.Hide();
+            }
         }
     }
 }

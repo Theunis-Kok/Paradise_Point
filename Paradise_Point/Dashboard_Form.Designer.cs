@@ -60,10 +60,9 @@
             this.lblUserName.Location = new System.Drawing.Point(91, 30);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(75, 16);
-<<<<<<< HEAD
-=======
+
             this.lblUserName.Size = new System.Drawing.Size(69, 15);
->>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
+
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "Bob Burger";
             // 

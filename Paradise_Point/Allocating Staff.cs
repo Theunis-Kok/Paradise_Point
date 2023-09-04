@@ -21,7 +21,7 @@ namespace Paradise_Point
 
         public string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|ParadisePoint.mdf;Integrated Security=True";
 
-        public static int arraySize = 6;
+        public static int arraySize = 50;
         public string[] arrActivityName = new string[arraySize];
         public string[] arrEmployeeName = new string[arraySize];
         public int numberOfActivties = 0;

@@ -94,7 +94,7 @@ namespace Paradise_Point
 
             nudNoBeds.Value = inoOfBeds;
             nudNoBath.Value = inoOfBathorooms;
-            txtPrice.Text = dPrice.ToString("f2");
+            txtPrice.Text = dPrice.ToString();
             cmbLocation.SelectedIndex = cmbLocation.Items.IndexOf(sLocation);
 
             dataReader.Close();

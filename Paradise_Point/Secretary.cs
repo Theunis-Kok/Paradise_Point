@@ -95,6 +95,7 @@ namespace Paradise_Point
         private void btnHelp_Click(object sender, EventArgs e)
         {
             Help_Form help = new Help_Form();
+            help.AdminDashBord = false;
             help.ShowDialog();
             this.Hide();
         }

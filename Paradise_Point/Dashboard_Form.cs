@@ -64,11 +64,11 @@ namespace Paradise_Point
             maintain_employee.Show();
             this.Hide();
         }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
+
+
+
         private void btnBookAct_Click(object sender, EventArgs e)
         {
             Booking_Activity booking = new Booking_Activity();
@@ -76,10 +76,8 @@ namespace Paradise_Point
             booking.Show();
             this.Hide();
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
+
 
         private void Dashboard_Form_Load(object sender, EventArgs e)
         {
@@ -117,22 +115,20 @@ namespace Paradise_Point
             }
         }
 
-<<<<<<< HEAD
+
 
         
 
-=======
->>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
+
         private void btnAllocateStaff_Click_1(object sender, EventArgs e)
         {
             Allocating_Staff allocating_Staff = new Allocating_Staff();
             allocating_Staff.AdminDashBord = true;
             allocating_Staff.Show();
             this.Hide();
-<<<<<<< HEAD
 
-=======
->>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
+
+
 
         }
 
@@ -141,10 +137,7 @@ namespace Paradise_Point
             Request_Report reqReport = new Request_Report();
             reqReport.Show();
             this.Close();
-<<<<<<< HEAD
 
-=======
->>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
         }
 
         private void btnBookClient_Click(object sender, EventArgs e)
@@ -153,7 +146,7 @@ namespace Paradise_Point
             booking_Client.AdminDashBord = true;
             booking_Client.Show();
             this.Hide();
-<<<<<<< HEAD
+
 
         }
 
@@ -162,8 +155,7 @@ namespace Paradise_Point
             Help_Form help_Form = new Help_Form();
             help_Form.ShowDialog();
             this.Hide();
-=======
->>>>>>> 243653aa62b1c6366da3bf4040e19d7aee83b3e4
+
         }
     }
 }
